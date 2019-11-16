@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><title>Kotlin is like C#</title><meta charset="utf-8"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/github.min.css"><style>body {
+<!DOCTYPE html><html><head><title>Kotlin is like C#</title><meta charset="utf-8"><link rel="icon" href="https://kotlinlang.org/assets/images/favicon.ico" type="image/x-icon"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/github.min.css"><style>body {
     font-family: "Helvetica Neue", sans-serif;
     margin: 0;
 }
@@ -48,7 +48,8 @@ body * {
     flex: 1;
     -webkit-flex: 1;
     -ms-flex: 1;
-    max-width: 50%;
+    width: 50%;
+    max-width: 650px;
     margin: 0 10px;
 }
 
@@ -97,7 +98,7 @@ body * {
     font-weight: 300;
     letter-spacing: 0.05em;
 }
-</style><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/kotlin.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/cs.min.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><a target="_blank" href="https://github.com/ttu/kotlin-is-like-csharp"><img id="fork-me" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_red_aa0000.png?resize=149%2C149"></a><div id="note">Kotlin is like C#</div><div class="disclaimer">Comparing syntax of Kotlin and C#. Don't take language likeness too seriously.</div><div class="disclaimer">Fixes, improvents and additions are welcome. Open an issue or a PR.</div><div class="section"><div class="title">BASICS</div><div class="case"><div class="name">Hello World</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>println("Hello, world!")
+</style><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/kotlin.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/cs.min.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><a target="_blank" href="https://github.com/ttu/kotlin-is-like-csharp"><img id="fork-me" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_red_aa0000.png?resize=149%2C149"></a><div id="note">Kotlin is like C#</div><div class="disclaimer">Comparing the syntax of Kotlin and C#. Don't take language likeness too seriously.</div><div class="disclaimer">Fixes, improvents and additions are welcome. Open an issue or a pull request.</div><div class="section"><div class="title">BASICS</div><div class="case"><div class="name">Hello World</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>println("Hello, world!")
 </code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>public void Main() 
 {
     Console.WriteLine("Hello, world!");
@@ -738,7 +739,7 @@ var text = GetValue(null, out var output) ? output : "Not set";
 
 val mapper = jacksonObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
 
-val repos = listOf( "abba", "acdc" )
+val repos = listOf("jetbrains/kotlin", "dotnet/csharplang")
 
 val asyncRequests = repos.map { repo ->
     GlobalScope.async {
@@ -754,7 +755,7 @@ runBlocking {
     results.forEach{ println("${it.full_name} : ${it.stargazers_count} - ${it.forks}") }
 }</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var client = new HttpClient();
 
-var repos = new [] { "abba", "acdc" };
+var repos = new [] { "jetbrains/kotlin", "dotnet/csharplang" };
 
 var asyncRequests = repos.Select(async repo =>
 {

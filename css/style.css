@@ -48,7 +48,8 @@ body * {
     flex: 1;
     -webkit-flex: 1;
     -ms-flex: 1;
-    max-width: 50%;
+    width: 50%;
+    max-width: 650px;
     margin: 0 10px;
 }
 

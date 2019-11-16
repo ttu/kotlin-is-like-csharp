@@ -2,7 +2,7 @@ data class Stats(val full_name: String, val stargazers_count: Int = -1, val fork
 
 val mapper = jacksonObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
 
-val repos = listOf( "abba", "acdc" )
+val repos = listOf("jetbrains/kotlin", "dotnet/csharplang")
 
 val asyncRequests = repos.map { repo ->
     GlobalScope.async {

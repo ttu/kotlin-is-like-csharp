@@ -1,6 +1,6 @@
 var client = new HttpClient();
 
-var repos = new [] { "abba", "acdc" };
+var repos = new [] { "jetbrains/kotlin", "dotnet/csharplang" };
 
 var asyncRequests = repos.Select(async repo =>
 {

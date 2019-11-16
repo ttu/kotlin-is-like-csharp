@@ -4,6 +4,9 @@ html
   head
     title "Kotlin is like C#"
     meta (:charset utf-8)
+    link (:rel icon)
+      :href https://kotlinlang.org/assets/images/favicon.ico
+      :type image/x-icon
     link (:rel stylesheet)
       :href https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/github.min.css
     style (@insert css/style.css)
@@ -19,8 +22,8 @@ html
     #note
       = "Kotlin is like C#"
      
-    .disclaimer "Comparing syntax of Kotlin and C#. Don't take language likeness too seriously."
-    .disclaimer "Fixes, improvents and additions are welcome. Open an issue or a PR."
+    .disclaimer "Comparing the syntax of Kotlin and C#. Don't take language likeness too seriously."
+    .disclaimer "Fixes, improvents and additions are welcome. Open an issue or a pull request."
     .section
       .title BASICS
       .case (.name "Hello World") $ .pair
