@@ -48,7 +48,7 @@ body * {
     flex: 1;
     -webkit-flex: 1;
     -ms-flex: 1;
-    max-width: 590px;
+    max-width: 50%;
     margin: 0 10px;
 }
 
@@ -74,6 +74,10 @@ body * {
 #fork-me {
     position: absolute;
     right: 0;
+}
+
+.hljs {
+    background-color: transparent;
 }
 
 #note {

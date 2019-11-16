@@ -10,7 +10,7 @@ mission.time()
 cirru = (data) ->
   mission.cirruHtml
     file: 'index.cirru'
-    from: 'cirru/'
+    from: './'
     to: './'
     extname: '.html'
     data: data
