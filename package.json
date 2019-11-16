@@ -1,0 +1,31 @@
+{
+  "name": "kotlin-is-like-csharp",
+  "version": "0.0.1",
+  "description": "Kotlin is like C#------",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tomi Tuhkanen",
+  "license": "MIT",
+  "devDependencies": {
+    "mission": "0.0.7",
+    "shelljs": "^0.3.0"
+  },
+  "dependencies": {
+    "mission": "^0.0.7",
+    "shelljs": "^0.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ttu/kotlin-is-like-csharp.git"
+  },
+  "keywords": [
+    "kotlin",
+    "C#"
+  ],
+  "bugs": {
+    "url": "https://github.com/ttu/kotlin-is-like-csharp/issues"
+  },
+  "homepage": "https://github.com/ttu/kotlin-is-like-csharp"
+}

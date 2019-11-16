@@ -1,0 +1,1 @@
+const string SYSTEM_DEPRECATED = "System is deprecated";

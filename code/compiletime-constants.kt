@@ -1,0 +1,1 @@
+const val SYSTEM_DEPRECATED: String = "System is deprecated"

@@ -1,0 +1,671 @@
+<!DOCTYPE html><html><head><title>Kotlin is like C#</title><meta charset="utf-8"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/highlightjs-github.css"><script src="js/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><a target="_blank" href="https://github.com/ttu/kotlin-is-like-csharp"><img id="fork-me" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_red_aa0000.png?resize=149%2C149"></a><div id="note">Kotlin is like C#</div><div class="disclaimer">Comparing syntax of Kotlin and C#. Don't take language likeness too seriously.</div><div class="disclaimer">Fixes, improvents and additions are welcome. Open an issue or a PR.</div><div class="section"><div class="title">BASICS</div><div class="case"><div class="name">Hello World</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>println("Hello, world!")
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>public void Main() 
+{
+    Console.WriteLine("Hello, world!");
+}</code></pre></div></div></div><div class="case"><div class="name">Variables and Constants</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>var myVariable = 42
+myVariable = 50
+val myConstant = 42
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var myVariable = 42;
+myVariable = 50;
+// C# doesn't have runtime constants
+</code></pre></div></div></div><div class="case"><div class="name">Explicit Types</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val explicitDouble: Double = 70.0
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>double explicitDouble = 70.0;
+</code></pre></div></div></div><div class="case"><div class="name">Type Coercion</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val label = "The width is "
+val width = 94
+val widthLabel = label + width
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var label = "The width is ";
+var width = 94;
+var widthLabel = label + width;</code></pre></div></div></div><div class="case"><div class="name">Compile Time Constants</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>const val SYSTEM_DEPRECATED: String = "System is deprecated"</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>const string SYSTEM_DEPRECATED = "System is deprecated";</code></pre></div></div></div><div class="case"><div class="name">String Interpolation</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val apples = 3
+val oranges = 5
+val fruitSummary = "I have ${apples + oranges} " +
+                   "pieces of fruit."
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var apples = 3;
+var oranges = 5;
+var fruitSummary = $"I have {apples + oranges} " +
+                   "pieces of fruit.";
+</code></pre></div></div></div><div class="case"><div class="name">If Expression / Statement</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val age = 42
+
+if (age < 10) {
+    println("You're too young to watch this movie")
+} else if (age < 13) {
+    println("You can watch this movie with a parent")
+} else {
+    println("You can watch this movie")
+}</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var age = 42;
+
+if (age < 10) 
+{
+    Console.WriteLine("You're too young to watch this movie");
+} 
+else if (age < 13) 
+{
+    Console.WriteLine("You can watch this movie with a parent");
+} 
+else 
+{
+    Console.WriteLine("You can watch this movie");
+}</code></pre></div></div></div><div class="case"><div class="name">Conditionals</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// if is an expression, so ternary operation not needed
+val loaded = true
+val status = if (loaded) "Ready" else "Loading..."
+// "Ready</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var loaded = true;
+var status = loaded ? "Ready" : "Loading...";
+// "Ready</code></pre></div></div></div></div><div class="section"><div class="title">FUNCTIONS</div><div class="case"><div class="name">Functions</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun greet(name: String, day: String): String {
+    return "Hello $name, today is $day."
+}
+
+val text = greet("Bob", "Tuesday")
+// Hello Bob, today is Tuesday
+
+// One line functions can be without braces
+fun double(value: Int): Int = value * 2
+val result = double(4)
+// 8</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>string Greet(string name, string day)
+{
+    return $"Hello {name}, today is {day}";
+}
+
+var text = Greet("Bob", "Tuesday");
+// Hello Bob, today is Tuesday
+
+// One line functions can be without braces
+int Double(int value) => value * 2;
+var result = Double(4);
+// 8</code></pre></div></div></div><div class="case"><div class="name">Named Arguments</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun area(width: Int, height: Int) = width * height
+var result = area(width = 2, height = 3)
+
+// This is also possible with named arguments
+result = area(2, height = 2)
+result = area(height = 3, width = 2)
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>int Area(int width, int height) => width * height;
+var result = Area(width: 2, height: 3);
+
+// This is also possible with named arguments
+result = Area(2, height: 2);
+result = Area(height: 3, width: 2);</code></pre></div></div></div><div class="case"><div class="name">Default Arguments</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun displayGreeting(message: String, name: String = "Guest") {
+    println("Hello $name, $message")
+}
+
+displayGreeting("welcome!")
+// Hello Guest, welcome!</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>void DisplayGreeting(string message, string name = "Guest") 
+{
+    Console.WriteLine($"Hello {name}, {message}");
+}
+
+DisplayGreeting("welcome!");
+// Hello Guest, welcome!</code></pre></div></div></div><div class="case"><div class="name">Variable Number of Arguments</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun sumOf(vararg numbers: Int): Int {
+    var sum = 0
+    for (number in numbers) {
+        sum += number
+    }
+    return sum
+}
+
+val sum = sumOf(42, 597, 12)
+
+// sumOf() can also be written in a shorter way:
+fun sumOf(vararg numbers: Int) = numbers.sum()
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>int SumOf(params int[] numbers)
+{
+    var sum = 0;
+    foreach (var number in numbers) 
+        sum += number;
+    return sum;
+}
+
+var sum = SumOf(42, 597, 12);
+
+// SumOf() can also be written in a shorter way:
+int SumOf(params int[] numbers) => numbers.Sum();</code></pre></div></div></div><div class="case"><div class="name">Tuple Return</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// Kotlin doesn't have tuples, use data classes
+data class GasPrices(val a: Double, val b: Double, val c: Double)
+
+fun getGasPrices() = GasPrices(3.59, 3.69, 3.79)
+
+val prices = getGasPrices();
+
+val (a, b, c) = getGasPrices();</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>(double a, double b, double c) GetGasPrices() => (3.59, 3.69, 3.79);
+
+var result = GetGasPrices();
+
+var (a, b, c) = GetGasPrices();</code></pre></div></div></div><div class="case"><div class="name">Function Type / Delegates</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun makeIncrementer(): (Int) -> Int {
+    val addOne = fun(number: Int): Int {
+        return 1 + number
+    }
+    return addOne
+}
+
+val increment = makeIncrementer()
+val result = increment(7)
+
+// makeIncrementer can also be written in a shorter way:
+fun makeIncrementer() = fun(number: Int) = 1 + number
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>Func&lt;int, int> MakeIncrementer()
+{
+    int addOne(int number) => 1 + number;
+    return addOne;
+}
+
+var increment = MakeIncrementer();
+var result = increment(7);
+
+// MakeIncrementer can also be written in a shorter way:
+Func&lt;int, int> MakeIncrementer() => new Func&lt;int, int>(i => 1 + i);
+</code></pre></div></div></div></div><div class="section"><div class="title">COLLECTIONS</div><div class="case"><div class="name">Arrays</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val shoppingList = arrayOf("catfish", "water",
+    "tulips", "blue paint")
+shoppingList[1] = "bottle of water"
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var shoppingList = new[] { "catfish", "water",
+    "tulips", "blue paint" };
+shoppingList[1] = "bottle of water";</code></pre></div></div></div><div class="case"><div class="name">Lists</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val shoppingList = listOf("catfish", "water",
+    "tulips", "blue paint")
+
+val shoppingListMutable = mutableListOf("catfish", "water",
+    "tulips", "blue paint")
+shoppingListMutable[1] = "bottle of water"
+shoppingListMutable.add("bucket")
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>IReadOnlyList&lt;string> shoppingList = new List&lt;string> { "catfish", 
+                    "water", "tulips", "blue paint" };
+
+var shoppingListMutable = new List&lt;string> { "catfish", "water",
+        "tulips", "blue paint" };
+shoppingListMutable[1] = "bottle of water";
+shoppingListMutable.Add("bucket");</code></pre></div></div></div><div class="case"><div class="name">Maps / Dictionaries</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val occupations = mapOf(
+    "Malcolm" to "Captain",
+    "Kaylee" to "Mechanic"
+)
+
+val occupationsMutable = mutableMapOf(
+    "Malcolm" to "Captain",
+    "Kaylee" to "Mechanic"
+)
+occupationsMutable["Jayne"] = "Public Relations"
+occupationsMutable.add("Rick", "Navigation")
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>IReadOnlyDictionary&lt;string,string> occupations = 
+                        new Dictionary&lt;string, string>
+{
+    ["Malcolm"] = "Captain",
+    ["Kaylee"] = "Mechanic"
+};
+
+var occupationsMutable = new Dictionary&lt;string, string>
+{
+    ["Malcolm"] = "Captain",
+    ["Kaylee"] = "Mechanic"
+};
+occupationsMutable["Jayne"] = "Public Relations";
+occupationsMutable.Add("Rick", "Navigation");
+</code></pre></div></div></div><div class="case"><div class="name">Empty Collections</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val emptyList = mutableListOf&lt;String>()
+val emptyMap = mutableMapOf&lt;String, Float>()
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var emptyList = new List&lt;string>();
+var emptyDictionary = new Dictionary&lt;string, float>();
+</code></pre></div></div></div><div class="case"><div class="name">Range Operator</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val names = arrayOf("Anna", "Alex", "Brian", "Jack")
+val count = names.count()
+
+for (i in 0..count - 1) {
+    println("Person ${i + 1} is called ${names[i]}")
+}
+// Person 1 is called Anna
+// Person 2 is called Alex
+// Person 3 is called Brian
+// Person 4 is called Jack
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var names = new[] { "Anna", "Alex", "Brian", "Jack" };
+var count = names.Count();
+
+foreach (var i in Enumerable.Range(0, count))
+{
+    Console.WriteLine($"Person {i + 1} is called {names[i]}");
+}
+// Person 1 is called Anna
+// Person 2 is called Alex
+// Person 3 is called Brian
+// Person 4 is called Jack
+</code></pre></div></div></div><div class="case"><div class="name">Inclusive Range Operator</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>for (index in 1..5) {
+    println("$index times 5 is ${index * 5}")
+}
+// 1 times 5 is 5
+// 2 times 5 is 10
+// 3 times 5 is 15
+// 4 times 5 is 20
+// 5 times 5 is 25
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>foreach (var index in Enumerable.Range(1, 5))
+{
+    Console.WriteLine($"{index} times 5 is {index * 5}");
+}
+// 1 times 5 is 5
+// 2 times 5 is 10
+// 3 times 5 is 15
+// 4 times 5 is 20
+// 5 times 5 is 25
+</code></pre></div></div></div><div class="case"><div class="name">Collection Range and Index</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val names = arrayOf("Anna", "Alex", "Brian", "Jill", "Jack")
+val count = names.count()
+
+for (i in names.slice(1 until count - 1)) {
+    println("Person is called ${i}")
+}
+// Person is called Alex
+// Person is called Brian
+// Person is called Jill</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var names = new[] { "Anna", "Alex", "Brian", "Jill", "Jack" };
+
+foreach (var name in names[1..^1])
+{
+    Console.WriteLine($"Person is called {names}");
+}
+// Person is called Alex
+// Person is called Brian
+// Person is called Jill
+</code></pre></div></div></div></div><div class="section"><div class="title">COLLECTION OPERATIONS</div><div class="case"><div class="name">Map</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val numbers = listOf(20, 19, 7, 12)
+val multiplied = numbers.map { 3 * it }
+// [ 60, 57, 21, 36 ]
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var numbers = new[] { 20, 19, 7, 12 };
+var multiplied = numbers.Select(e => 3 * e);
+// [ 60, 57, 21, 36 ]</code></pre></div></div></div><div class="case"><div class="name">Sort</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val ordered = listOf(1, 5, 3, 12, 2).sorted()
+// [ 1, 2, 3, 5, 12 ]</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var ordered = new[] { 1, 5, 3, 12, 2 }.OrderBy(i => i);
+// [ 1, 2, 3, 5, 12 ]</code></pre></div></div></div><div class="case"><div class="name">Filter / GroupBy / Average</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>var datas = listOf(
+    SensorData(1, "A", 2.89),
+    SensorData(2, "B", 12.01),
+    SensorData(3, "B", 11.89),
+    SensorData(4, "A", 3.11),
+    SensorData(5, "A", -456.0)
+)
+
+var avgs = datas
+            .filter { it.value > -50.0 }
+            .groupBy { it.location }
+            .map { g -> 
+                location(g.key, 
+                         g.value.map { it.value }.average()) }
+
+// { location: A, value: 3.0 }
+// { location: B, value: 11.95 }</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var datas = new List&lt;SensorData> 
+{
+    new SensorData { Id = 1, Location = "A", Value = 2.89 },
+    new SensorData { Id = 2, Location = "B", Value = 12.01 },
+    new SensorData { Id = 3, Location = "B", Value = 11.89 },
+    new SensorData { Id = 4, Location = "A", Value = 3.11 },
+    new SensorData { Id = 5, Location = "A", Value = -456.0 }
+};
+
+var avgs = datas
+            .Where(e => e.Value > -50.0)
+            .GroupBy(e => e.Location)
+            .Select(g => new { 
+                    Location = g.Key,
+                    Value = g.Average(e => e.Value) });
+
+// { Location: A, Value: 3.0 }
+// { Location: B, Value: 11.95 }</code></pre></div></div></div></div><div class="section"><div class="title">CLASSES</div><div class="case"><div class="name">Declaration</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>class Shape {
+    var numberOfSides = 0
+    fun simpleDescription() =
+        "A shape with $numberOfSides sides."
+}
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>class Shape 
+{
+    public int NumberOfSides { get; set; }
+    public string SimpleDescription() => 
+        $"A shape with {NumberOfSides} sides.";
+}
+</code></pre></div></div></div><div class="case"><div class="name">Usage</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>var shape = Shape()
+shape.numberOfSides = 7
+var shapeDescription = shape.simpleDescription()
+// A shape with 7 sides.</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var shape = new Shape();
+shape.NumberOfSides = 7;
+var shapeDescription = shape.SimpleDescription();
+// A shape with 7 sides.</code></pre></div></div></div><div class="case"><div class="name">Subclass</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>open class NamedShape(val name: String) {
+    var numberOfSides = 0
+
+    open fun simpleDescription() =
+        "A shape with $numberOfSides sides."
+}
+
+class Square(var sideLength: BigDecimal, name: String) :
+        NamedShape(name) {
+    init {
+        numberOfSides = 4
+    }
+
+    fun area() = sideLength.pow(2)
+
+    override fun simpleDescription() =
+        "A square with sides of length $sideLength."
+}
+
+val square = Square(BigDecimal("5.2"), "square")
+val area = square.area()
+val desc = square.simpleDescription()
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>class NamedShape
+{
+    private readonly string _name;
+
+    public NamedShape(string name) => _name = name;
+
+    protected int NumberOfSides { get; set; }
+
+    public virtual string SimpleDescription() =>
+         $"A shape with {NumberOfSides} sides.";
+}
+
+class Square: NamedShape
+{
+    private readonly double _sideLength;
+
+    public Square(double sideLength, string name) : base(name)
+    {
+        _sideLength = sideLength;
+        NumberOfSides = 4;
+    }
+
+    public double Area() => Math.Pow(_sideLength, 2);
+
+    override public string SimpleDescription() =>
+        $"A square with sides of length {_sideLength}.";
+}
+
+var square = new Square(5.2, "square");
+var area = square.Area();
+var desc = square.SimpleDescription();
+</code></pre></div></div></div><div class="case"><div class="name">Data Class</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>data class Customer(var id: Long, var name: String)
+
+val customer = Customer(1, "Sachin")
+
+val name = customer.name
+customer.id = 2
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>// C# doesn't have data classes
+public class Customer
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+}
+
+var customer = new Customer { Id  = 1, Name = "Sachin" };
+
+var name = customer.Name;
+customer.Id = 2</code></pre></div></div></div><div class="case"><div class="name">Immutable Data Class</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>data class Customer(val id: Long, val name: String)
+
+val customer = Customer(1, "Sachin")
+
+val name = customer.name
+customer.id = 2 // Error
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>public class Customer
+{
+    public Customer(int id, string name)
+    {
+        Id = id;
+        Name = name;
+    }
+    
+    public int Id { get; }
+    public string Name { get; }
+}
+
+var customer = new Customer(1, "Sachin");
+
+var name = customer.Name;
+customer.Id = 2 // Error</code></pre></div></div></div><div class="case"><div class="name">Extensions / Extension Methods</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun MutableList<Int>.swap(idx1: Int, idx2: Int) {
+    val tmp = this[idx1]
+    this[idx1] = this[idx2]
+    this[idx2] = tmp
+}
+
+val list = mutableListOf(1, 5, 3)
+list.swap(0, 2)
+// [ 3, 5, 1 ]</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>public static class Extensions 
+{
+    public static void Swap(this List&lt;int> list, int idx1, int idx2)
+    {
+        var temp = list[idx1];
+        list[idx1] = list[idx2];
+        list[idx2] = temp;
+    }
+}
+
+var list = new List&lt;int> { 1, 5, 3 };
+list.Swap(0, 2);
+// [ 3, 5, 1 ]
+</code></pre></div></div></div><div class="case"><div class="name">Interfaces</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>interface Nameable {
+    fun name(): String
+}
+
+fun genericFunction&lt;T: Nameable>(x: T) {
+    println("Name is " + x.name())
+}
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>interface INameable 
+{
+    string Name();
+}
+
+void GenericMethod&lt;T>(T x) where T : INameable
+{
+    Console.WriteLine("Name is " + x.Name());
+}
+</code></pre></div></div></div></div><div class="section"><div class="title">TYPES</div><div class="case"><div class="name">Checking Type</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>var movieCount = 0
+var songCount = 0
+
+for (item in library) {
+    if (item is Movie) {
+        ++movieCount
+    } else if (item is Song) {
+        ++songCount
+    }
+}
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var movieCount = 0;
+var songCount = 0;
+
+foreach (var item in library) 
+{
+    if (item is Movie)
+        ++movieCount;
+    else if (item is Song)
+        ++songCount;
+}
+</code></pre></div></div></div><div class="case"><div class="name">Casting</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// Unsafe
+val circle: Circle = shape as Circle
+
+// Safe
+val circle: Circle? = shape as Circle?
+
+val circle: Circle? = shape as? Circle</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>// Unsafe
+var circle = (Circle)shape;
+
+// Safe
+var circle = shape as Circle;</code></pre></div></div></div><div class="case"><div class="name">Smart Cast</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>for (current in library) {
+    if (current is Movie) {
+        println("Movie: '${current.name}', " +
+	    "dir. ${current.director}")
+    }
+}
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>foreach (var current in library)
+{
+    if (current is Movie movie)
+    {
+        Console.WriteLine($"Movie: '{movie.name}', " +
+	    $"dir. {movie.director}");
+    }
+}
+</code></pre></div></div></div></div><div class="section"><div class="title">PATTERN MATCHING</div><div class="case"><div class="name">When / Switch Expression</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val nb = 42
+when (nb) {
+    in 0..7, 8, 9 -> println("single digit")
+    10 -> println("double digits")
+    in 11..99 -> println("double digits")
+    in 100..999 -> println("triple digits")
+    else -> println("four or more digits")
+}</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var nb = 42;
+var text = nb switch
+{
+    int i when i < 10 => "single digit",
+    10 => "double digits",
+    int i when i > 100 => "double digits",
+    int i when i > 1000 => "triple digits",
+    _ => "four or more digits"
+};</code></pre></div></div></div><div class="case"><div class="name">Is Expression / When Clause / Property Pattern</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// Not supported yet
+// https://youtrack.jetbrains.com/issue/KT-20004
+// http://openjdk.java.net/jeps/305</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>
+var result = item switch
+{
+    Square s => Handle(s),
+    Circle c when c.Radius < 10 => HandleUnder10(c),
+    Circle { Radius: 20 } c => Handle20(c),
+    Circle c => Handle(c),
+    _ => throw new Exception("Unknown shape")
+};
+
+// Same with if statements
+if (item is Square s)
+{ }
+else if (item is Circle c && c.Radius < 10)
+{ }
+else if (item is Circle { Radius: 20} c)
+{ }
+else if (item is Circle ci)
+{ }</code></pre></div></div></div></div><div class="section"><div class="title">NULL</div><div class="case"><div class="name">Nullable Types</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>data class Measurement(val celsius)
+
+val data: Measurement = null // Error: can't be null
+val data: Measurement? = null // Ok: can be null
+
+fun printMayBeNull(data: Measurement?) {
+    // data can be null, must have null check
+    if (data == null)
+        return
+
+    println(it.celsius)
+}
+
+fun printNoNull(data: Measurement) {
+    // data can't be null. No need for check
+    println(data.celsius)
+}
+
+val current: Measurement? = getDataFromApi()
+
+printMayBeNull(current) // Ok: can be null
+
+if (current == null)
+    return
+
+printNoNull(current)
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>// Nullable reference types are optional feature in C#
+
+public class Measurement 
+{ 
+    public double Celsius { get; set; }
+}
+
+Measurement? data = null; // Ok: can be null
+Measurement data = null; // Error: can't be null
+
+void PrintMayBeNull(Measurement? data) 
+{
+    // data can be null, must have null check
+    if (data == null)
+        return;
+
+    Console.WriteLin(data.Celsius);
+}
+
+void PrintNoNull(Measurement data) 
+{
+    // data can't be null. No need for check
+    Console.WriteLin(data.Celsius);
+}
+
+Measurement? current = GetDataFromApi();
+
+PrintMayBeNull(current); // No need for check as method accepts nulls
+
+if (current == null)
+    return; 
+
+PrintNoNull(current); // OK: Null is checked before method call</code></pre></div></div></div><div class="case"><div class="name">Null Conditional</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>data class DataPoint(val id: Int, val celsius: Double, 
+    val child: DataPoint? = null)
+
+val data = DataPoint(1, 22.1, DataPoint(2, 22.8))
+
+val result = data.child?.child?.
+            let { toFahrenheit(it.celsius) } ?: Double.MIN_VALUE</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>public class DataPoint
+{
+    public int Id { get; set; }
+    public double Celsius { get; set; }
+    public DataPoint? Child { get; set; }
+}
+        
+var data = new DataPoint 
+{ 
+    Id = 1, 
+    Celsius = 22.1, 
+    Child = new DataPoint { Id = 2, Celsius = 22.8 }
+};
+
+var result = data.Child?.Child != null
+                ? ToFahrenheit(data.Child.Child.Celsius) 
+                : double.MinValue;</code></pre></div></div></div><div class="case"><div class="name">Elvis Operator / Null Coalescing</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val data = DataPoint(1, 22.1, DataPoint(2, 22.8))
+
+val result = data.child?.child?.celsius ?: Double.MIN_VALUE
+// Double.MIN_VALUE</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var data = new DataPoint 
+{ 
+    Id = 1, 
+    Celsius = 22.1, 
+    Child = new DataPoint { Id = 2, Celsius = 22.8 }
+};
+
+var result = data.Child?.Child?.Celsius ?? double.MinValue;
+// double.MinValue</code></pre></div></div></div><div class="case"><div class="name">Dynamic, Out and Conditional</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// The dynamic type is not supported in code targeting the JVM
+// https://kotlinlang.org/docs/reference/dynamic-type.html
+
+// Use .let and forget weird helper methods
+
+val data = DataPoint(1, 22.1, DataPoint(2, 22.8))
+
+val result = data.child?.child?.
+            let { toFahrenheit(it.celsius) } ?: Double.MIN_VALUE</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>// Dynamic helper method that will return boolean and set output
+bool GetValue(dynamic? input, out dynamic? output)
+{
+    output = input;
+    return output != null;
+}
+
+var data = new DataPoint 
+{ 
+    Id = 1, 
+    Celsius = 22.1, 
+    Child = new DataPoint { Id = 2, Celsius = 22.8 }
+};
+
+var result = GetValue(data.Child?.Child?.Celsius, out var output)
+                ? ToFahrenheit(output) 
+                : double.MinValue;
+
+var text = GetValue("My text", out var output) ? output : "Not set";
+// "My text"
+var text = GetValue(null, out var output) ? output : "Not set";
+// "Not set"
+</code></pre></div></div></div></div><div class="section"><div class="title">COROUTINES / TASKS</div><div class="case"><div class="name">Async / Await</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>data class Stats(val full_name: String, val stargazers_count: Int = -1, val forks: Int = -1)
+
+val mapper = jacksonObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+
+val repos = listOf( "abba", "acdc" )
+
+val asyncRequests = repos.map { repo ->
+    GlobalScope.async {
+        val body = Fuel.get("https://api.github.com/repos/${repo}")
+            .responseString()
+            .third.component1() // Fuel Result & Body
+        body?.let { mapper.readValue<Stats>(it) } ?: Stats(repo)
+    }
+}
+
+runBlocking {
+    val results = asyncRequests.map { it.await() }
+    results.forEach{ println("${it.full_name} : ${it.stargazers_count} - ${it.forks}") }
+}</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var client = new HttpClient();
+
+var repos = new [] { "abba", "acdc" };
+
+var asyncRequests = repos.Select(async repo =>
+{
+    var response = await client.GetAsync($"https://api.github.com/repos/{repo}");
+    var json = await response.Content.ReadAsStringAsync();
+    dynamic content = JsonConvert.DeserializeObject(json);
+    return new { repo, stars = content.stargazers_count, forks = content.forks };
+});
+
+var results = await Task.WhenAll(asyncRequests);
+
+foreach(var data in results)
+    Console.WriteLine($"{data.repo} : {data.stars} - {data.forks}");</code></pre></div></div></div></div></body></html>
