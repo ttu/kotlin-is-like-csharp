@@ -56,6 +56,9 @@ html
       .case (.name "Functions") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert ./code/functions.kt)
         .card (.lang C#) $ pre.code $ code (@insert ./code/functions.cs)
+      .case (.name "Single Expression Functions") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert ./code/single-expression.kt)
+        .card (.lang C#) $ pre.code $ code (@insert ./code/single-expression.cs)
       .case (.name "Named Arguments") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert ./code/named-arguments.kt)
         .card (.lang C#) $ pre.code $ code (@insert ./code/named-arguments.cs)
@@ -65,12 +68,18 @@ html
       .case (.name "Variable Number of Arguments") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert ./code/variable-number-of-arguments.kt)
         .card (.lang C#) $ pre.code $ code (@insert ./code/variable-number-of-arguments.cs)
+      .case (.name "Lambdas") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert ./code/lambda.kt)
+        .card (.lang C#) $ pre.code $ code (@insert ./code/lambda.cs)
+      .case (.name "Higher-Order Functions - Return Function") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert ./code/hof-return.kt)
+        .card (.lang C#) $ pre.code $ code (@insert ./code/hof-return.cs)
+      .case (.name "Higher-Order Functions - Function Parameter") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert ./code/hof-parameter.kt)
+        .card (.lang C#) $ pre.code $ code (@insert ./code/hof-parameter.cs)
       .case (.name "Tuple Return") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert ./code/tuple-return.kt)
         .card (.lang C#) $ pre.code $ code (@insert ./code/tuple-return.cs)
-      .case (.name "Function Type / Delegates") $ .pair
-        .card (.lang Kotlin) $ pre.code $ code (@insert ./code/function-type.kt)
-        .card (.lang C#) $ pre.code $ code (@insert ./code/function-type.cs)
 
     .section
       .title COLLECTIONS

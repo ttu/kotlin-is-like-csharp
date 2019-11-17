@@ -23,4 +23,4 @@ fun test(x : Shape) {
 
 //test(Square())
 
-fun toFahrenheit(celsius: Double) = celsius * 3.81
+fun toFahrenheit(celsius: Double) = (celsius * 9) / 5 + 32

@@ -155,21 +155,19 @@ var status = loaded ? "Ready" : "Loading...";
 }
 
 val text = greet("Bob", "Tuesday")
-// Hello Bob, today is Tuesday
-
-// One line functions can be without braces
-fun double(value: Int): Int = value * 2
-val result = double(4)
-// 8</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>string Greet(string name, string day)
+// Hello Bob, today is Tuesday</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>string Greet(string name, string day)
 {
     return $"Hello {name}, today is {day}";
 }
 
 var text = Greet("Bob", "Tuesday");
-// Hello Bob, today is Tuesday
+// Hello Bob, today is Tuesday</code></pre></div></div></div><div class="case"><div class="name">Single Expression Functions</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// Single expression functions can be without braces and return type
+fun double(value: Int) = value * 2
 
-// One line functions can be without braces
+val result = double(4)
+// 8</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>// Single expression functions can be without braces
 int Double(int value) => value * 2;
+
 var result = Double(4);
 // 8</code></pre></div></div></div><div class="case"><div class="name">Named Arguments</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun area(width: Int, height: Int) = width * height
 var result = area(width = 2, height = 3)
@@ -216,18 +214,7 @@ fun sumOf(vararg numbers: Int) = numbers.sum()
 var sum = SumOf(42, 597, 12);
 
 // SumOf() can also be written in a shorter way:
-int SumOf(params int[] numbers) => numbers.Sum();</code></pre></div></div></div><div class="case"><div class="name">Tuple Return</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// Kotlin doesn't have tuples, use data classes
-data class GasPrices(val a: Double, val b: Double, val c: Double)
-
-fun getGasPrices() = GasPrices(3.59, 3.69, 3.79)
-
-val prices = getGasPrices();
-
-val (a, b, c) = getGasPrices();</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>(double a, double b, double c) GetGasPrices() => (3.59, 3.69, 3.79);
-
-var result = GetGasPrices();
-
-var (a, b, c) = GetGasPrices();</code></pre></div></div></div><div class="case"><div class="name">Function Type / Delegates</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun makeIncrementer(): (Int) -> Int {
+int SumOf(params int[] numbers) => numbers.Sum();</code></pre></div></div></div><div class="case"><div class="name">Lambdas</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun containsEven(numbers: List&lt;Int>): Boolean = numbers.any { it % 2 == 0 }</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>bool ContainsEven(List&lt;Int> numbers) = numbers.Any(e => e % 2 == 0);</code></pre></div></div></div><div class="case"><div class="name">Higher-Order Functions - Return Function</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun makeIncrementer(): (Int) -> Int {
     val addOne = fun(number: Int): Int {
         return 1 + number
     }
@@ -250,7 +237,24 @@ var result = increment(7);
 
 // MakeIncrementer can also be written in a shorter way:
 Func&lt;int, int> makeIncrementer() => new Func&lt;int, int>(i => 1 + i);
-</code></pre></div></div></div></div><div class="section"><div class="title">COLLECTIONS</div><div class="case"><div class="name">Arrays</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val shoppingList = arrayOf("catfish", "water",
+</code></pre></div></div></div><div class="case"><div class="name">Higher-Order Functions - Function Parameter</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun transform(initial: String, f: (String) -> String) = f(initial)
+
+val result = transform("hello", { x -> x.toUpperCase() })
+// HELLO</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>string Transform(string initial, Func&lt;string, string> f) => f(initial);
+
+var result = Transform("hello", x => x.ToUpper());
+// HELLO</code></pre></div></div></div><div class="case"><div class="name">Tuple Return</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// Kotlin doesn't have tuples, use data classes
+data class GasPrices(val a: Double, val b: Double, val c: Double)
+
+fun getGasPrices() = GasPrices(3.59, 3.69, 3.79)
+
+val prices = getGasPrices();
+
+val (a, b, c) = getGasPrices();</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>(double a, double b, double c) GetGasPrices() => (3.59, 3.69, 3.79);
+
+var result = GetGasPrices();
+
+var (a, b, c) = GetGasPrices();</code></pre></div></div></div></div><div class="section"><div class="title">COLLECTIONS</div><div class="case"><div class="name">Arrays</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val shoppingList = arrayOf("catfish", "water",
     "tulips", "blue paint")
 shoppingList[1] = "bottle of water"
 </code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var shoppingList = new[] { "catfish", "water",

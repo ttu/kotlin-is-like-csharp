@@ -1,0 +1,1 @@
+fun containsEven(numbers: List&lt;Int>): Boolean = numbers.any { it % 2 == 0 }

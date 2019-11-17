@@ -5,8 +5,3 @@ string Greet(string name, string day)
 
 var text = Greet("Bob", "Tuesday");
 // Hello Bob, today is Tuesday
-
-// One line functions can be without braces
-int Double(int value) => value * 2;
-var result = Double(4);
-// 8

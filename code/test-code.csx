@@ -35,3 +35,5 @@ public class SensorData
     public string Location { get; set; }
     public double Value { get; set; }
 }
+
+double ToFahrenheit(double celsius) => (celsius * 9) / 5 + 32;
