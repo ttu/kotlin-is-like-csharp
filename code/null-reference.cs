@@ -14,13 +14,13 @@ void PrintMayBeNull(Measurement? data)
     if (data == null)
         return;
 
-    Console.WriteLin(data.Celsius);
+    Console.WriteLine(data.Celsius);
 }
 
 void PrintNoNull(Measurement data) 
 {
     // data can't be null. No need for check
-    Console.WriteLin(data.Celsius);
+    Console.WriteLine(data.Celsius);
 }
 
 Measurement? current = GetDataFromApi();

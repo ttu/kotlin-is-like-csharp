@@ -26,6 +26,6 @@ class Square: NamedShape
         $"A square with sides of length {_sideLength}.";
 }
 
-var square = new Square(5.2, "square");
+var square = new Square(5.2, "My square");
 var area = square.Area();
 var desc = square.SimpleDescription();

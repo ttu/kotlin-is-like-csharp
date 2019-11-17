@@ -1,4 +1,4 @@
-fun MutableList<Int>.swap(idx1: Int, idx2: Int) {
+fun MutableList&lt;Int>.swap(idx1: Int, idx2: Int) {
     val tmp = this[idx1]
     this[idx1] = this[idx2]
     this[idx2] = tmp

@@ -1,4 +1,4 @@
-data class Measurement(val celsius)
+data class Measurement(val celsius: Double)
 
 val data: Measurement = null // Error: can't be null
 val data: Measurement? = null // Ok: can be null
@@ -8,7 +8,7 @@ fun printMayBeNull(data: Measurement?) {
     if (data == null)
         return
 
-    println(it.celsius)
+    println(data.celsius)
 }
 
 fun printNoNull(data: Measurement) {

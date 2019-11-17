@@ -113,9 +113,10 @@ myVariable = 50;
 </code></pre></div></div></div><div class="case"><div class="name">Type Coercion</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val label = "The width is "
 val width = 94
 val widthLabel = label + width
-</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var label = "The width is ";
+// The width is 94</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var label = "The width is ";
 var width = 94;
-var widthLabel = label + width;</code></pre></div></div></div><div class="case"><div class="name">Compile Time Constants</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>const val SYSTEM_DEPRECATED: String = "System is deprecated"</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>const string SYSTEM_DEPRECATED = "System is deprecated";</code></pre></div></div></div><div class="case"><div class="name">String Interpolation</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val apples = 3
+var widthLabel = label + width;
+// The width is 94</code></pre></div></div></div><div class="case"><div class="name">Compile Time Constants</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>const val SYSTEM_DEPRECATED: String = "System is deprecated"</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>const string SYSTEM_DEPRECATED = "System is deprecated";</code></pre></div></div></div><div class="case"><div class="name">String Interpolation</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val apples = 3
 val oranges = 5
 val fruitSummary = "I have ${apples + oranges} " +
                    "pieces of fruit."
@@ -248,7 +249,7 @@ var increment = MakeIncrementer();
 var result = increment(7);
 
 // MakeIncrementer can also be written in a shorter way:
-Func&lt;int, int> MakeIncrementer() => new Func&lt;int, int>(i => 1 + i);
+Func&lt;int, int> makeIncrementer() => new Func&lt;int, int>(i => 1 + i);
 </code></pre></div></div></div></div><div class="section"><div class="title">COLLECTIONS</div><div class="case"><div class="name">Arrays</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val shoppingList = arrayOf("catfish", "water",
     "tulips", "blue paint")
 shoppingList[1] = "bottle of water"
@@ -277,7 +278,7 @@ val occupationsMutable = mutableMapOf(
     "Kaylee" to "Mechanic"
 )
 occupationsMutable["Jayne"] = "Public Relations"
-occupationsMutable.add("Rick", "Navigation")
+occupationsMutable.put("Rick", "Navigation")
 </code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>IReadOnlyDictionary&lt;string,string> occupations = 
                         new Dictionary&lt;string, string>
 {
@@ -296,7 +297,25 @@ occupationsMutable.Add("Rick", "Navigation");
 val emptyMap = mutableMapOf&lt;String, Float>()
 </code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var emptyList = new List&lt;string>();
 var emptyDictionary = new Dictionary&lt;string, float>();
-</code></pre></div></div></div><div class="case"><div class="name">Range Operator</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val names = arrayOf("Anna", "Alex", "Brian", "Jack")
+</code></pre></div></div></div><div class="case"><div class="name">ForEach</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val names = arrayOf("Anna", "Alex", "Brian", "Jack")
+val count = names.count()
+
+for (name in names) {
+    println("Person is called ${name}")
+}
+// Person is called Anna
+// Person is called Alex
+// Person is called Brian
+// Person is called Jack</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var names = new[] { "Anna", "Alex", "Brian", "Jack" };
+
+foreach (var name in names)
+{
+    Console.WriteLine($"Person is called {names}");
+}
+// Person is called Anna
+// Person is called Alex
+// Person is called Brian
+// Person is called Jack</code></pre></div></div></div><div class="case"><div class="name">Range Operator</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val names = arrayOf("Anna", "Alex", "Brian", "Jack")
 val count = names.count()
 
 for (i in 0..count - 1) {
@@ -337,8 +356,8 @@ foreach (var i in Enumerable.Range(0, count))
 </code></pre></div></div></div><div class="case"><div class="name">Collection Range and Index</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val names = arrayOf("Anna", "Alex", "Brian", "Jill", "Jack")
 val count = names.count()
 
-for (i in names.slice(1 until count - 1)) {
-    println("Person is called ${i}")
+for (name in names.slice(1 until count - 1)) {
+    println("Person is called ${name}")
 }
 // Person is called Alex
 // Person is called Brian
@@ -346,7 +365,7 @@ for (i in names.slice(1 until count - 1)) {
 
 foreach (var name in names[1..^1])
 {
-    Console.WriteLine($"Person is called {names}");
+    Console.WriteLine($"Person is called {name}");
 }
 // Person is called Alex
 // Person is called Brian
@@ -370,11 +389,11 @@ var avgs = datas
             .filter { it.value > -50.0 }
             .groupBy { it.location }
             .map { g -> 
-                location(g.key, 
+                Location(g.key, 
                          g.value.map { it.value }.average()) }
 
-// { location: A, value: 3.0 }
-// { location: B, value: 11.95 }</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var datas = new List&lt;SensorData> 
+// (location=A, value=3.0)
+// (location=B, value=11.95)</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var datas = new List&lt;SensorData> 
 {
     new SensorData { Id = 1, Location = "A", Value = 2.89 },
     new SensorData { Id = 2, Location = "B", Value = 12.01 },
@@ -390,8 +409,8 @@ var avgs = datas
                     Location = g.Key,
                     Value = g.Average(e => e.Value) });
 
-// { Location: A, Value: 3.0 }
-// { Location: B, Value: 11.95 }</code></pre></div></div></div></div><div class="section"><div class="title">CLASSES</div><div class="case"><div class="name">Declaration</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>class Shape {
+// { Location = A, Value = 3.0 }
+// { Location = B, Value = 11.95 }</code></pre></div></div></div></div><div class="section"><div class="title">CLASSES</div><div class="case"><div class="name">Declaration</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>class Shape {
     var numberOfSides = 0
     fun simpleDescription() =
         "A shape with $numberOfSides sides."
@@ -415,7 +434,7 @@ var shapeDescription = shape.SimpleDescription();
         "A shape with $numberOfSides sides."
 }
 
-class Square(var sideLength: BigDecimal, name: String) :
+class Square(var sideLength: Double, name: String) :
         NamedShape(name) {
     init {
         numberOfSides = 4
@@ -427,7 +446,7 @@ class Square(var sideLength: BigDecimal, name: String) :
         "A square with sides of length $sideLength."
 }
 
-val square = Square(BigDecimal("5.2"), "square")
+val square = Square(5.2, "My square")
 val area = square.area()
 val desc = square.simpleDescription()
 </code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>class NamedShape
@@ -458,7 +477,7 @@ class Square: NamedShape
         $"A square with sides of length {_sideLength}.";
 }
 
-var square = new Square(5.2, "square");
+var square = new Square(5.2, "My square");
 var area = square.Area();
 var desc = square.SimpleDescription();
 </code></pre></div></div></div><div class="case"><div class="name">Data Class</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>data class Customer(var id: Long, var name: String)
@@ -498,7 +517,7 @@ customer.id = 2 // Error
 var customer = new Customer(1, "Sachin");
 
 var name = customer.Name;
-customer.Id = 2 // Error</code></pre></div></div></div><div class="case"><div class="name">Extensions / Extension Methods</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun MutableList<Int>.swap(idx1: Int, idx2: Int) {
+customer.Id = 2 // Error</code></pre></div></div></div><div class="case"><div class="name">Extensions / Extension Methods</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun MutableList&lt;Int>.swap(idx1: Int, idx2: Int) {
     val tmp = this[idx1]
     this[idx1] = this[idx2]
     this[idx2] = tmp
@@ -523,8 +542,12 @@ list.Swap(0, 2);
     fun name(): String
 }
 
-fun genericFunction&lt;T: Nameable>(x: T) {
+fun &lt;T: Nameable> genericFunction(x: T) {
     println("Name is " + x.name())
+}
+
+class Person : Nameable {
+    override fun name() = "Person A"
 }
 </code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>interface INameable 
 {
@@ -535,7 +558,11 @@ void GenericMethod&lt;T>(T x) where T : INameable
 {
     Console.WriteLine("Name is " + x.Name());
 }
-</code></pre></div></div></div></div><div class="section"><div class="title">TYPES</div><div class="case"><div class="name">Checking Type</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>var movieCount = 0
+
+class Person : INameable
+{
+    public string Name() => "Person A";
+}</code></pre></div></div></div></div><div class="section"><div class="title">TYPES</div><div class="case"><div class="name">Checking Type</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>var movieCount = 0
 var songCount = 0
 
 for (item in library) {
@@ -555,17 +582,20 @@ foreach (var item in library)
     else if (item is Song)
         ++songCount;
 }
-</code></pre></div></div></div><div class="case"><div class="name">Casting</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// Unsafe
+</code></pre></div></div></div><div class="case"><div class="name">Casting</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// Unsafe (throw exception)
 val circle: Circle = shape as Circle
 
-// Safe
+// Safe (return null)
 val circle: Circle? = shape as Circle?
 
-val circle: Circle? = shape as? Circle</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>// Unsafe
+val circle: Circle? = shape as? Circle</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>// Unsafe (throw exception)
 var circle = (Circle)shape;
 
-// Safe
-var circle = shape as Circle;</code></pre></div></div></div><div class="case"><div class="name">Smart Cast</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>for (current in library) {
+// Safe (return null)
+var circle = shape as Circle;
+
+// If Nullable reference types enabled (optional feature)
+Circle? circle = shape as Circle;</code></pre></div></div></div><div class="case"><div class="name">Smart Cast</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>for (current in library) {
     if (current is Movie) {
         println("Movie: '${current.name}', " +
 	    "dir. ${current.director}")
@@ -575,8 +605,8 @@ var circle = shape as Circle;</code></pre></div></div></div><div class="case"><d
 {
     if (current is Movie movie)
     {
-        Console.WriteLine($"Movie: '{movie.name}', " +
-	    $"dir. {movie.director}");
+        Console.WriteLine($"Movie: '{movie.Name}', " +
+	    $"dir. {movie.Director}");
     }
 }
 </code></pre></div></div></div></div><div class="section"><div class="title">PATTERN MATCHING</div><div class="case"><div class="name">When / Switch Expression</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val nb = 42
@@ -614,7 +644,7 @@ else if (item is Circle c && c.Radius < 10)
 else if (item is Circle { Radius: 20} c)
 { }
 else if (item is Circle ci)
-{ }</code></pre></div></div></div></div><div class="section"><div class="title">NULL</div><div class="case"><div class="name">Nullable Types</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>data class Measurement(val celsius)
+{ }</code></pre></div></div></div></div><div class="section"><div class="title">NULL</div><div class="case"><div class="name">Nullable Types</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>data class Measurement(val celsius: Double)
 
 val data: Measurement = null // Error: can't be null
 val data: Measurement? = null // Ok: can be null
@@ -624,7 +654,7 @@ fun printMayBeNull(data: Measurement?) {
     if (data == null)
         return
 
-    println(it.celsius)
+    println(data.celsius)
 }
 
 fun printNoNull(data: Measurement) {
@@ -656,13 +686,13 @@ void PrintMayBeNull(Measurement? data)
     if (data == null)
         return;
 
-    Console.WriteLin(data.Celsius);
+    Console.WriteLine(data.Celsius);
 }
 
 void PrintNoNull(Measurement data) 
 {
     // data can't be null. No need for check
-    Console.WriteLin(data.Celsius);
+    Console.WriteLine(data.Celsius);
 }
 
 Measurement? current = GetDataFromApi();

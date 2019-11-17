@@ -5,7 +5,7 @@ open class NamedShape(val name: String) {
         "A shape with $numberOfSides sides."
 }
 
-class Square(var sideLength: BigDecimal, name: String) :
+class Square(var sideLength: Double, name: String) :
         NamedShape(name) {
     init {
         numberOfSides = 4
@@ -17,6 +17,6 @@ class Square(var sideLength: BigDecimal, name: String) :
         "A square with sides of length $sideLength."
 }
 
-val square = Square(BigDecimal("5.2"), "square")
+val square = Square(5.2, "My square")
 val area = square.area()
 val desc = square.simpleDescription()

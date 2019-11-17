@@ -8,4 +8,4 @@ val occupationsMutable = mutableMapOf(
     "Kaylee" to "Mechanic"
 )
 occupationsMutable["Jayne"] = "Public Relations"
-occupationsMutable.add("Rick", "Navigation")
+occupationsMutable.put("Rick", "Navigation")

@@ -10,8 +10,8 @@ var avgs = datas
             .filter { it.value > -50.0 }
             .groupBy { it.location }
             .map { g -> 
-                location(g.key, 
+                Location(g.key, 
                          g.value.map { it.value }.average()) }
 
-// { location: A, value: 3.0 }
-// { location: B, value: 11.95 }
+// (location=A, value=3.0)
+// (location=B, value=11.95)

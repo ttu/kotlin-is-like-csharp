@@ -86,6 +86,9 @@ html
       .case (.name "Empty Collections") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert ./code/empty-collections.kt)
         .card (.lang C#) $ pre.code $ code (@insert ./code/empty-collections.cs)
+      .case (.name "ForEach") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert ./code/foreach.kt)
+        .card (.lang C#) $ pre.code $ code (@insert ./code/foreach.cs)
       .case (.name "Range Operator") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert ./code/range-operator.kt)
         .card (.lang C#) $ pre.code $ code (@insert ./code/range-operator.cs)

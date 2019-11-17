@@ -14,5 +14,5 @@ var avgs = datas
                     Location = g.Key,
                     Value = g.Average(e => e.Value) });
 
-// { Location: A, Value: 3.0 }
-// { Location: B, Value: 11.95 }
+// { Location = A, Value = 3.0 }
+// { Location = B, Value = 11.95 }

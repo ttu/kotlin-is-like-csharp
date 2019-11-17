@@ -1,7 +1,7 @@
-// Unsafe
+// Unsafe (throw exception)
 val circle: Circle = shape as Circle
 
-// Safe
+// Safe (return null)
 val circle: Circle? = shape as Circle?
 
 val circle: Circle? = shape as? Circle
