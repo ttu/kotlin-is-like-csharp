@@ -6,7 +6,7 @@ val repos = listOf("jetbrains/kotlin", "dotnet/csharplang")
 
 val asyncRequests = repos.map { repo ->
     GlobalScope.async {
-        val body = Fuel.get("https://api.github.com/repos/${repo}")
+        val body = Fuel.get("https://api.github.com/repos/$repo")
             .responseString()
             .third.component1() // Fuel Result & Body
         body?.let { mapper.readValue<Stats>(it) } ?: Stats(repo)

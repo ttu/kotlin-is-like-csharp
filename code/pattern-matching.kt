@@ -1,8 +1,9 @@
 val nb = 42
-when (nb) {
-    in 0..7, 8, 9 -> println("single digit")
-    10 -> println("double digits")
-    in 11..99 -> println("double digits")
-    in 100..999 -> println("triple digits")
-    else -> println("four or more digits")
+val text = when (nb) {
+    in 0..7, 8, 9 -> "single digit"
+    10 -> "double digits"
+    in 11..99 -> "double digits"
+    in 100..999 -> "triple digits"
+    else -> "four or more digits"
 }
+// double digits

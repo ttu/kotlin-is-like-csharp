@@ -7,3 +7,4 @@ var text = nb switch
     int i when i > 1000 => "triple digits",
     _ => "four or more digits"
 };
+// double digits

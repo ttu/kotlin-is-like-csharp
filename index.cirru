@@ -71,10 +71,10 @@ html
       .case (.name "Lambdas") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert ./code/lambda.kt)
         .card (.lang C#) $ pre.code $ code (@insert ./code/lambda.cs)
-      .case (.name "Higher-Order Functions - Return Function") $ .pair
+      .case (.name "Higher-Order Functions - Return a Function") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert ./code/hof-return.kt)
         .card (.lang C#) $ pre.code $ code (@insert ./code/hof-return.cs)
-      .case (.name "Higher-Order Functions - Function Parameter") $ .pair
+      .case (.name "HOF - Function as Parameter") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert ./code/hof-parameter.kt)
         .card (.lang C#) $ pre.code $ code (@insert ./code/hof-parameter.cs)
       .case (.name "Tuple Return") $ .pair

@@ -214,7 +214,7 @@ fun sumOf(vararg numbers: Int) = numbers.sum()
 var sum = SumOf(42, 597, 12);
 
 // SumOf() can also be written in a shorter way:
-int SumOf(params int[] numbers) => numbers.Sum();</code></pre></div></div></div><div class="case"><div class="name">Lambdas</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun containsEven(numbers: List&lt;Int>): Boolean = numbers.any { it % 2 == 0 }</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>bool ContainsEven(List&lt;Int> numbers) = numbers.Any(e => e % 2 == 0);</code></pre></div></div></div><div class="case"><div class="name">Higher-Order Functions - Return Function</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun makeIncrementer(): (Int) -> Int {
+int SumOf(params int[] numbers) => numbers.Sum();</code></pre></div></div></div><div class="case"><div class="name">Lambdas</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun containsEven(numbers: List&lt;Int>) = numbers.any { it % 2 == 0 }</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>bool ContainsEven(List&lt;Int> numbers) = numbers.Any(e => e % 2 == 0);</code></pre></div></div></div><div class="case"><div class="name">Higher-Order Functions - Return a Function</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun makeIncrementer(): (Int) -> Int {
     val addOne = fun(number: Int): Int {
         return 1 + number
     }
@@ -237,9 +237,11 @@ var result = increment(7);
 
 // MakeIncrementer can also be written in a shorter way:
 Func&lt;int, int> makeIncrementer() => new Func&lt;int, int>(i => 1 + i);
-</code></pre></div></div></div><div class="case"><div class="name">Higher-Order Functions - Function Parameter</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun transform(initial: String, f: (String) -> String) = f(initial)
+</code></pre></div></div></div><div class="case"><div class="name">HOF - Function as Parameter</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun transform(initial: String, f: (String) -> String) = f(initial)
 
 val result = transform("hello", { x -> x.toUpperCase() })
+// Trailing lambda can be placed outside the parentheses
+val result2 = transform("hello") { x -> x.toUpperCase() }
 // HELLO</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>string Transform(string initial, Func&lt;string, string> f) => f(initial);
 
 var result = Transform("hello", x => x.ToUpper());
@@ -305,17 +307,23 @@ var emptyDictionary = new Dictionary&lt;string, float>();
 val count = names.count()
 
 for (name in names) {
-    println("Person is called ${name}")
+    println("Person is called $name")
 }
+
+names.forEach { println("Person is called $it") }
+
 // Person is called Anna
 // Person is called Alex
 // Person is called Brian
-// Person is called Jack</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var names = new[] { "Anna", "Alex", "Brian", "Jack" };
+// Person is called Jack</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var names = new List&lt;string> { "Anna", "Alex", "Brian", "Jack" };
 
 foreach (var name in names)
 {
-    Console.WriteLine($"Person is called {names}");
+    Console.WriteLine($"Person is called {name}");
 }
+
+names.ForEach(name => Console.WriteLine($"Person is called {name}"));
+
 // Person is called Anna
 // Person is called Alex
 // Person is called Brian
@@ -361,7 +369,7 @@ foreach (var i in Enumerable.Range(0, count))
 val count = names.count()
 
 for (name in names.slice(1 until count - 1)) {
-    println("Person is called ${name}")
+    println("Person is called $name")
 }
 // Person is called Alex
 // Person is called Brian
@@ -614,13 +622,14 @@ Circle? circle = shape as Circle;</code></pre></div></div></div><div class="case
     }
 }
 </code></pre></div></div></div></div><div class="section"><div class="title">PATTERN MATCHING</div><div class="case"><div class="name">When / Switch Expression</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val nb = 42
-when (nb) {
-    in 0..7, 8, 9 -> println("single digit")
-    10 -> println("double digits")
-    in 11..99 -> println("double digits")
-    in 100..999 -> println("triple digits")
-    else -> println("four or more digits")
-}</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var nb = 42;
+val text = when (nb) {
+    in 0..7, 8, 9 -> "single digit"
+    10 -> "double digits"
+    in 11..99 -> "double digits"
+    in 100..999 -> "triple digits"
+    else -> "four or more digits"
+}
+// double digits</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var nb = 42;
 var text = nb switch
 {
     int i when i < 10 => "single digit",
@@ -628,7 +637,8 @@ var text = nb switch
     int i when i > 100 => "double digits",
     int i when i > 1000 => "triple digits",
     _ => "four or more digits"
-};</code></pre></div></div></div><div class="case"><div class="name">Is Expression / When Clause / Property Pattern</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// Not supported yet
+};
+// double digits</code></pre></div></div></div><div class="case"><div class="name">Is Expression / When Clause / Property Pattern</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// Not supported yet
 // https://youtrack.jetbrains.com/issue/KT-20004
 // http://openjdk.java.net/jeps/305</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>
 var result = item switch
@@ -777,7 +787,7 @@ val repos = listOf("jetbrains/kotlin", "dotnet/csharplang")
 
 val asyncRequests = repos.map { repo ->
     GlobalScope.async {
-        val body = Fuel.get("https://api.github.com/repos/${repo}")
+        val body = Fuel.get("https://api.github.com/repos/$repo")
             .responseString()
             .third.component1() // Fuel Result & Body
         body?.let { mapper.readValue<Stats>(it) } ?: Stats(repo)
