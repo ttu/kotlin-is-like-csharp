@@ -301,9 +301,13 @@ occupationsMutable["Jayne"] = "Public Relations";
 occupationsMutable.Add("Rick", "Navigation");
 </code></pre></div></div></div><div class="case"><div class="name">Empty Collections</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val emptyList = mutableListOf&lt;String>()
 val emptyMap = mutableMapOf&lt;String, Float>()
-</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var emptyList = new List&lt;string>();
+
+// read-only empty list
+val empty = emptyList&lt;String>()</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var emptyList = new List&lt;string>();
 var emptyDictionary = new Dictionary&lt;string, float>();
-</code></pre></div></div></div><div class="case"><div class="name">ForEach</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val names = arrayOf("Anna", "Alex", "Brian", "Jack")
+
+// read-only empty list
+var empty = Enumerable.Empty&lt;string>();</code></pre></div></div></div><div class="case"><div class="name">ForEach</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val names = arrayOf("Anna", "Alex", "Brian", "Jack")
 val count = names.count()
 
 for (name in names) {
@@ -382,7 +386,7 @@ foreach (var name in names[1..^1])
 // Person is called Alex
 // Person is called Brian
 // Person is called Jill
-</code></pre></div></div></div></div><div class="section"><div class="title">COLLECTION OPERATIONS</div><div class="case"><div class="name">Map</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val numbers = listOf(20, 19, 7, 12)
+</code></pre></div></div></div></div><div class="section"><div class="title">COLLECTION OPERATIONS / LINQ</div><div class="case"><div class="name">Map</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val numbers = listOf(20, 19, 7, 12)
 val multiplied = numbers.map { 3 * it }
 // [ 60, 57, 21, 36 ]
 </code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var numbers = new[] { 20, 19, 7, 12 };
@@ -422,7 +426,52 @@ var avgs = datas
                     Value = g.Average(e => e.Value) });
 
 // { Location = A, Value = 3.0 }
-// { Location = B, Value = 11.95 }</code></pre></div></div></div></div><div class="section"><div class="title">CLASSES</div><div class="case"><div class="name">Declaration</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>class Shape {
+// { Location = B, Value = 11.95 }</code></pre></div></div></div><div class="case"><div class="name">Sequences</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// Sequence is lazy
+val seq = sequenceOf(1, 2, 3, 4)
+    .filter { println("Filter $it, "); it % 2 == 1 }
+    .map { println("Map $it, "); it * 2 }
+
+// Computations are evaluated during terminal operation
+val items = seq.toList()
+
+// Filter 1,
+// Map 1,
+// Filter 2,
+// Filter 3,
+// Map 3,
+// Filter 4,
+
+// List is not lazy, so functions are evaluated immediately
+val items2 = listOf(1, 2, 3, 4)
+    .filter { println("Filter $it, "); it % 2 == 1 }
+    .map { println("Map $it, "); it * 2 }
+
+// Filter 1,
+// Filter 2,
+// Filter 3,
+// Filter 4,
+// Map 1,
+// Map 3,</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>// LINQ is lazy, so no need to use other collection types
+var query = new List<int> { 1, 2, 3, 4 }
+        .Where(i =>
+        {
+            Console.WriteLine($"Filter {i}, ");
+            return i % 2 == 1;
+        }).Select(i =>
+        {
+            Console.WriteLine($"Map {i}, ");
+            return i * 2;
+        });
+
+
+var items = query.ToList();
+
+//Filter 1,
+//Map 1,
+//Filter 2,
+//Filter 3,
+//Map 3,
+//Filter 4,</code></pre></div></div></div></div><div class="section"><div class="title">CLASSES</div><div class="case"><div class="name">Declaration</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>class Shape {
     var numberOfSides = 0
     fun simpleDescription() =
         "A shape with $numberOfSides sides."

@@ -109,7 +109,7 @@ html
         .card (.lang C#) $ pre.code $ code (@insert ./code/range-and-index.cs)
 
     .section
-      .title "COLLECTION OPERATIONS"
+      .title "COLLECTION OPERATIONS / LINQ"
       .case (.name "Map") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert ./code/map.kt)
         .card (.lang C#) $ pre.code $ code (@insert ./code/map.cs)
@@ -119,6 +119,9 @@ html
       .case (.name "Filter / GroupBy / Average") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert ./code/collections.kt)
         .card (.lang C#) $ pre.code $ code (@insert ./code/collections.cs)
+      .case (.name "Sequences") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert ./code/sequence.kt)
+        .card (.lang C#) $ pre.code $ code (@insert ./code/sequence.cs)
 
     .section
       .title CLASSES
