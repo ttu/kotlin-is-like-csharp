@@ -8,4 +8,4 @@ var increment = MakeIncrementer();
 var result = increment(7);
 
 // MakeIncrementer can also be written in a shorter way:
-Func&lt;int, int> makeIncrementer() => new Func&lt;int, int>(i => 1 + i);
+Func&lt;int, int> MakeIncrementer() => i => 1 + i;
