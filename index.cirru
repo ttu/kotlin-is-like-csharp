@@ -4,6 +4,8 @@ html
   head
     title "Kotlin is like C#"
     meta (:charset utf-8)
+    meta (:name description)
+      :content "Comparing the syntax of Kotlin and C# through short code examples.")
     link (:rel icon)
       :href https://kotlinlang.org/assets/images/favicon.ico
       :type image/x-icon
