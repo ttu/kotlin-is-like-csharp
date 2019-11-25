@@ -181,9 +181,15 @@ html
       .case (.name "Elvis Operator / Null Coalescing") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert ./code/null-coalescing.kt)
         .card (.lang C#) $ pre.code $ code (@insert ./code/null-coalescing.cs)
-      .case (.name "Dynamic, Out and Conditional") $ .pair
-        .card (.lang Kotlin) $ pre.code $ code (@insert ./code/dynamic-conditional.kt)
-        .card (.lang C#) $ pre.code $ code (@insert ./code/dynamic-conditional.cs)
+      .case (.name "Generics, Out and Conditional") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert ./code/generic-conditional.kt)
+        .card (.lang C#) $ pre.code $ code (@insert ./code/generic-conditional.cs)
+
+    .section
+      .title "JSON / DYNAMIC"
+      .case (.name "Dynamic") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert ./code/dynamic.kt)
+        .card (.lang C#) $ pre.code $ code (@insert ./code/dynamic.cs)
 
     .section
       .title "COROUTINES / TASKS"

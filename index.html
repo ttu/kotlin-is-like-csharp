@@ -104,10 +104,12 @@ body * {
     Console.WriteLine("Hello, world!");
 }</code></pre></div></div></div><div class="case"><div class="name">Variables and Constants</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>var myVariable = 42
 myVariable = 50
+
 val myConstant = 42
 </code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var myVariable = 42;
 myVariable = 50;
-// C# doesn't have runtime constants
+
+// C# doesn't have local runtime constants
 </code></pre></div></div></div><div class="case"><div class="name">Explicit Types</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val explicitDouble: Double = 70.0
 </code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>double explicitDouble = 70.0;
 </code></pre></div></div></div><div class="case"><div class="name">Type Coercion</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val label = "The width is "
@@ -798,16 +800,13 @@ val result = data.child?.child?.celsius ?: Double.MIN_VALUE
 };
 
 var result = data.Child?.Child?.Celsius ?? double.MinValue;
-// double.MinValue</code></pre></div></div></div><div class="case"><div class="name">Dynamic, Out and Conditional</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// The dynamic type is not supported in code targeting the JVM
-// https://kotlinlang.org/docs/reference/dynamic-type.html
-
-// Use .let and forget weird helper methods
+// double.MinValue</code></pre></div></div></div><div class="case"><div class="name">Generics, Out and Conditional</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// Use .let and forget weird helper methods
 
 val data = DataPoint(1, 22.1, DataPoint(2, 22.8))
 
 val result = data.child?.child?.
-            let { toFahrenheit(it.celsius) } ?: Double.MIN_VALUE</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>// Dynamic helper method that will return boolean and set output
-bool GetValue(dynamic? input, out dynamic? output)
+            let { toFahrenheit(it.celsius) } ?: Double.MIN_VALUE</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>// Generic helper method that will return boolean and set output
+bool GetValue&lt;T>(T input, out T output)
 {
     output = input;
     return output != null;
@@ -820,15 +819,54 @@ var data = new DataPoint
     Child = new DataPoint { Id = 2, Celsius = 22.8 }
 };
 
-var result = GetValue(data.Child?.Child?.Celsius, out var output)
-                ? ToFahrenheit(output) 
+var result = GetValue(data.Child?.Child, out var output)
+                ? ToFahrenheit(output.Celsius) 
                 : double.MinValue;
 
-var text = GetValue("My text", out var output) ? output : "Not set";
+string set = "My text";
+var text = GetValue(set, out var output) ? output : "Not set";
 // "My text"
-var text = GetValue(null, out var output) ? output : "Not set";
+string notSet = null;
+var text = GetValue(notSet, out var output) ? output : "Not set";
 // "Not set"
-</code></pre></div></div></div></div><div class="section"><div class="title">COROUTINES / TASKS</div><div class="case"><div class="name">Async / Await</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>data class Stats(val full_name: String, val stargazers_count: Int = -1, val forks: Int = -1)
+</code></pre></div></div></div></div><div class="section"><div class="title">JSON / DYNAMIC</div><div class="case"><div class="name">Dynamic</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// The dynamic type is not supported in code targeting the JVM
+// https://kotlinlang.org/docs/reference/dynamic-type.html
+
+// JSON example with data classes
+data class Work(val name: String, val location: String)
+data class User(val id: String, val work: Work)
+
+val json = """[
+    { "id": "A", "work": { "name": "ACME 2", "location": "NY" } },
+    { "id": "B", "work": { "name": "Box Co", "location": "SF" } },
+    { "id": "C", "work": { "name": "DotCom", "location": "NY" } }
+]"""
+
+val users =  jacksonObjectMapper().readValue&lt;List&lt;User>>(json)
+
+val name = users.first().work.name
+// ACME 2
+
+val fromNy = users
+              .filter { it.work.location == "NY" }
+              .map { it.id }
+// [A, C]</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>/* with dynamic, type is not known until runtime */
+
+var json = @"[
+  { 'id': 'A', 'work': { 'name': 'ACME 2', 'location': 'NY' } },
+  { 'id': 'B', 'work': { 'name': 'Box Co', 'location': 'SF' } },
+  { 'id': 'C', 'work': { 'name': 'DotCom', 'location': 'NY' } }
+]";
+
+var users = JsonConvert.DeserializeObject&lt;List&lt;dynamic>>(json);
+
+var name = users.First().work.name;
+// ACME 2
+
+var fromNY = users
+              .Where(e => e.work.location == "NY")
+              .Select(e => e.id);
+// [A, C]</code></pre></div></div></div></div><div class="section"><div class="title">COROUTINES / TASKS</div><div class="case"><div class="name">Async / Await</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>data class Stats(val full_name: String, val stargazers_count: Int = -1, val forks: Int = -1)
 
 val mapper = jacksonObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
 
