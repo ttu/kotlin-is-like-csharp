@@ -162,6 +162,15 @@ html
         .card (.lang C#) $ pre.code $ code (@insert ./code/smart-casting.cs)
 
     .section
+      .title EXCEPTIONS
+      .case (.name "Exception Handling") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert ./code/exceptions.kt)
+        .card (.lang C#) $ pre.code $ code (@insert ./code/exceptions.cs)
+      .case (.name "Exception Experssion") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert ./code/exception-expression.kt)
+        .card (.lang C#) $ pre.code $ code (@insert ./code/exception-expression.cs)
+
+    .section
       .title "PATTERN MATCHING"
       .case (.name "When / Switch Expression") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert ./code/pattern-matching.kt)

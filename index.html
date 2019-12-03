@@ -672,7 +672,46 @@ Circle? circle = shape as Circle;</code></pre></div></div></div><div class="case
 	    $"dir. {movie.Director}");
     }
 }
-</code></pre></div></div></div></div><div class="section"><div class="title">PATTERN MATCHING</div><div class="case"><div class="name">When / Switch Expression</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val nb = 42
+</code></pre></div></div></div></div><div class="section"><div class="title">EXCEPTIONS</div><div class="case"><div class="name">Exception Handling</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>try {
+    // some code
+}
+catch (e: SomeException) {
+    if (e.SomeCode == 404) {
+        // handle SomeException when SomeCode is 404
+    } else {
+        // handle SomeException
+    }
+}
+catch (e: Exception) {
+    // handle rest of the Exceptions
+}
+finally {
+    // optional finally block
+}</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>try 
+{
+    // Some code
+}
+catch (SomeException e) when (e.SomeCode == 404) 
+{
+    // Handle SomeException only when SomeCode is 404
+}
+catch (SomeException e) 
+{
+    // Handle SomeException
+}
+catch (Exception e) 
+{
+    // Handle rest of the Exceptions 
+}
+finally 
+{
+    // Optional finally block
+}</code></pre></div></div></div><div class="case"><div class="name">Exception Experssion</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// try is an expression, i.e. it may have a return value
+val a: Int? = try { input.toInt() } 
+              catch (e: NumberFormatException) { null }</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>// try is not an expression
+int? a;
+try { a = int.Parse(input); }
+catch { a = null; }</code></pre></div></div></div></div><div class="section"><div class="title">PATTERN MATCHING</div><div class="case"><div class="name">When / Switch Expression</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val nb = 42
 val text = when (nb) {
     in 0..7, 8, 9 -> "single digit"
     10 -> "double digits"
