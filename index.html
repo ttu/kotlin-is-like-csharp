@@ -724,8 +724,8 @@ var text = nb switch
 {
     int i when i < 10 => "single digit",
     10 => "double digits",
-    int i when i > 100 => "double digits",
-    int i when i > 1000 => "triple digits",
+    int i when i < 100 => "double digits",
+    int i when i < 1000 => "triple digits",
     _ => "four or more digits"
 };
 // double digits</code></pre></div></div></div><div class="case"><div class="name">Is Expression / When Clause / Property Pattern</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// Not supported yet
