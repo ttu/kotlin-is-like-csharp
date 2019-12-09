@@ -16,9 +16,10 @@ MIT
 ### Develop
 
 ```bash
-npm i -g coffeescript
-npm i # install dependencies to build tools
-./make.coffee dev # build html
+# install dependencies to build tools
+$ npm i
+# build html
+$ npm run build 
 ```
 
-HTML is generated from `cirru/index.cirru`.
+HTML is generated from `index.cirru`.

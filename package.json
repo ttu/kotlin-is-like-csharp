@@ -1,20 +1,18 @@
 {
   "name": "kotlin-is-like-csharp",
   "version": "0.0.1",
-  "description": "Kotlin is like C#------",
+  "description": "Kotlin is like C#",
   "main": "index.js",
   "scripts": {
+    "build": "coffee make.coffee dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tomi Tuhkanen",
   "license": "MIT",
   "devDependencies": {
     "mission": "0.0.7",
-    "shelljs": "^0.3.0"
-  },
-  "dependencies": {
-    "mission": "^0.0.7",
-    "shelljs": "^0.3.0"
+    "shelljs": "^0.3.0",
+    "coffeescript": "^2.4.1"
   },
   "repository": {
     "type": "git",
