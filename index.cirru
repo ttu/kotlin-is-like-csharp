@@ -5,7 +5,7 @@ html
     title "Kotlin is like C#"
     meta (:charset utf-8)
     meta (:name description)
-      :content "Comparing the syntax of Kotlin and C# through short code examples.")
+      :content "Kotlin vs C#. Compare the syntax of Kotlin and C# through short code examples.")
     link (:rel icon)
       :href https://kotlinlang.org/assets/images/favicon.ico
       :type image/x-icon
@@ -24,7 +24,7 @@ html
     #note
       = "Kotlin is like C#"
      
-    .disclaimer "Comparing the syntax of Kotlin and C#. Don't take language likeness too seriously."
+    .disclaimer "Compare the syntax of Kotlin vs C#. Don't take language likeness comparison too seriously."
     .disclaimer "Fixes, improvents and additions are welcome. Open an issue or a pull request."
     .section
       .title BASICS
