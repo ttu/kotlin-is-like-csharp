@@ -567,11 +567,7 @@ val name = customer.name
 customer.id = 2 // Error
 </code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>public class Customer
 {
-    public Customer(int id, string name)
-    {
-        Id = id;
-        Name = name;
-    }
+    public Customer(int id, string name) => (Id, Name) = (id, name);
     
     public int Id { get; }
     public string Name { get; }

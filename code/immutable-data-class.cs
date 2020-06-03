@@ -1,10 +1,6 @@
 public class Customer
 {
-    public Customer(int id, string name)
-    {
-        Id = id;
-        Name = name;
-    }
+    public Customer(int id, string name) => (Id, Name) = (id, name);
     
     public int Id { get; }
     public string Name { get; }
