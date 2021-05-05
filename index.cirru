@@ -166,7 +166,7 @@ html
       .case (.name "Exception Handling") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert ./code/exceptions.kt)
         .card (.lang C#) $ pre.code $ code (@insert ./code/exceptions.cs)
-      .case (.name "Exception Experssion") $ .pair
+      .case (.name "Exception Expression") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert ./code/exception-expression.kt)
         .card (.lang C#) $ pre.code $ code (@insert ./code/exception-expression.cs)
 
