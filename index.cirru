@@ -136,7 +136,7 @@ html
       .case (.name "Subclass") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert ./code/subclass.kt)
         .card (.lang C#) $ pre.code $ code (@insert ./code/subclass.cs)
-      .case (.name "Data Class") $ .pair
+      .case (.name "Data Class / Record") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert ./code/data-class.kt)
         .card (.lang C#) $ pre.code $ code (@insert ./code/data-class.cs)
       .case (.name "Immutable Data Class") $ .pair
