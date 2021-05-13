@@ -546,13 +546,13 @@ class Square: NamedShape
 var square = new Square(5.2, "My square");
 var area = square.Area();
 var desc = square.SimpleDescription();
-</code></pre></div></div></div><div class="case"><div class="name">Data Class</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>data class Customer(var id: Long, var name: String)
+</code></pre></div></div></div><div class="case"><div class="name">Data Class / Record</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>data class Customer(var id: Long, var name: String)
 
 val customer = Customer(1, "Sachin")
 
 val name = customer.name
 customer.id = 2
-</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>// C# doesn't have data classes
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>// Pre C# 9 doesn't have data classes
 public class Customer
 {
     public int Id { get; set; }
@@ -562,13 +562,39 @@ public class Customer
 var customer = new Customer { Id  = 1, Name = "Sachin" };
 
 var name = customer.Name;
-customer.Id = 2</code></pre></div></div></div><div class="case"><div class="name">Immutable Data Class</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>data class Customer(val id: Long, val name: String)
+customer.Id = 2
+
+// C# 9 has records
+// Records can be mutable, but they are primarily 
+// intended for supporting immutable data models
+public record Customer
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+}</code></pre></div></div></div><div class="case"><div class="name">Immutable Data Class / Record</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>data class Customer(val id: Long, val name: String)
 
 val customer = Customer(1, "Sachin")
 
 val name = customer.name
 customer.id = 2 // Error
-</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>public class Customer
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>// C# 9 immutable records can be created with positional parameters
+public record Customer(int Id, string Name);
+
+Customer customer = new(1, "Sachin");
+customer.Id = 2 // Error
+
+// or with standard property syntax and init only setter
+public record Customer
+{
+    public int Id { get; init; }
+    public string Name { get; init; }
+};
+
+var customer = new Customer { Id  = 1, Name = "Sachin" };
+customer.Id = 2 // Error
+
+// Pre C# 9
+public class Customer
 {
     public Customer(int id, string name) => (Id, Name) = (id, name);
     
