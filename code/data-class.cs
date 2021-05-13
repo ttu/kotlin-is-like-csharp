@@ -1,3 +1,4 @@
+// Pre C# 9 doesn't have data classes
 public class Customer
 {
     public int Id { get; set; }
@@ -9,7 +10,7 @@ var customer = new Customer { Id  = 1, Name = "Sachin" };
 var name = customer.Name;
 customer.Id = 2
 
-// C# 9
+// C# 9 has records
 // Records can be mutable, but they are primarily 
 // intended for supporting immutable data models
 public record Customer
