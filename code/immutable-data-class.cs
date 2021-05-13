@@ -4,7 +4,7 @@ public record Customer(int Id, string Name);
 Customer customer = new(1, "Sachin");
 customer.Id = 2 // Error
 
-// or with standard property syntac and init only setter
+// or with standard property syntax and init only setter
 public record Customer
 {
     public int Id { get; init; }
