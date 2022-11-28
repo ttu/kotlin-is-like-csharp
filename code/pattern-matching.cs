@@ -1,4 +1,4 @@
-// Pre C#-9
+// Pre C# 9
 var nb = 42;
 var text = nb switch
 {
