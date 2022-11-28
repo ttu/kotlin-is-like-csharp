@@ -160,9 +160,9 @@ var status = loaded ? "Ready" : "Loading...";
 }
 
 val text = greet("Bob", "Tuesday")
-// Hello Bob, today is Tuesday</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>string Greet(string name, string day)
+// Hello Bob, today is Tuesday.</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>string Greet(string name, string day)
 {
-    return $"Hello {name}, today is {day}";
+    return $"Hello {name}, today is {day}.";
 }
 
 var text = Greet("Bob", "Tuesday");
@@ -245,9 +245,10 @@ Func&lt;int, int> MakeIncrementer() => i => 1 + i;
 </code></pre></div></div></div><div class="case"><div class="name">HOF - Function as Parameter</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun transform(initial: String, f: (String) -> String) = f(initial)
 
 val result = transform("hello", { x -> x.toUpperCase() })
+// HELLO
+
 // Trailing lambda can be placed outside the parentheses
-val result2 = transform("hello") { x -> x.toUpperCase() }
-// HELLO</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>string Transform(string initial, Func&lt;string, string> f) => f(initial);
+val result2 = transform("hello") { x -> x.toUpperCase() }</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>string Transform(string initial, Func&lt;string, string> f) => f(initial);
 
 var result = Transform("hello", x => x.ToUpper());
 // HELLO</code></pre></div></div></div><div class="case"><div class="name">Tuple Return</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// Kotlin doesn't have tuples, use data classes
@@ -313,7 +314,6 @@ var emptyDictionary = new Dictionary&lt;string, float>();
 
 // read-only empty list
 var empty = Enumerable.Empty&lt;string>();</code></pre></div></div></div><div class="case"><div class="name">ForEach</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val names = arrayOf("Anna", "Alex", "Brian", "Jack")
-val count = names.count()
 
 for (name in names) {
     println("Person is called $name")
@@ -686,7 +686,7 @@ var circle = shape as Circle;
 Circle? circle = shape as Circle;</code></pre></div></div></div><div class="case"><div class="name">Smart Cast</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>for (current in library) {
     if (current is Movie) {
         println("Movie: '${current.name}', " +
-	    "dir. ${current.director}")
+	    "dir: ${current.director}")
     }
 }
 </code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>foreach (var current in library)
@@ -694,7 +694,7 @@ Circle? circle = shape as Circle;</code></pre></div></div></div><div class="case
     if (current is Movie movie)
     {
         Console.WriteLine($"Movie: '{movie.Name}', " +
-	    $"dir. {movie.Director}");
+	    $"dir: {movie.Director}");
     }
 }
 </code></pre></div></div></div></div><div class="section"><div class="title">EXCEPTIONS</div><div class="case"><div class="name">Exception Handling</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>try {
@@ -731,7 +731,7 @@ catch (Exception e)
 finally 
 {
     // Optional finally block
-}</code></pre></div></div></div><div class="case"><div class="name">Exception Expression</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// try is an expression, i.e. it may have a return value
+}</code></pre></div></div></div><div class="case"><div class="name">Exception Expression</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// try is an expression, i.e., it may have a return value
 val a: Int? = try { input.toInt() } 
               catch (e: NumberFormatException) { null }</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>// try is not an expression
 int? a;
@@ -744,7 +744,7 @@ val text = when (nb) {
     in 100..999 -> "triple digits"
     else -> "four or more digits"
 }
-// double digits</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>// Pre C#-9
+// double digits</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>// Pre C# 9
 var nb = 42;
 var text = nb switch
 {
@@ -766,8 +766,7 @@ var text = nb switch
 };
 // double digits</code></pre></div></div></div><div class="case"><div class="name">Is Expression / When Clause / Property Pattern</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// Not supported yet
 // https://youtrack.jetbrains.com/issue/KT-20004
-// http://openjdk.java.net/jeps/305</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>
-var result = item switch
+// http://openjdk.java.net/jeps/305</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var result = item switch
 {
     Square s => Handle(s),
     Circle { Radius: < 10 } c => HandleUnder10(c),
