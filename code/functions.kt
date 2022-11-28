@@ -3,4 +3,4 @@ fun greet(name: String, day: String): String {
 }
 
 val text = greet("Bob", "Tuesday")
-// Hello Bob, today is Tuesday
+// Hello Bob, today is Tuesday.
