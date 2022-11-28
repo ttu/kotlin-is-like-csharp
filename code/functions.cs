@@ -1,6 +1,6 @@
 string Greet(string name, string day)
 {
-    return $"Hello {name}, today is {day}";
+    return $"Hello {name}, today is {day}.";
 }
 
 var text = Greet("Bob", "Tuesday");
