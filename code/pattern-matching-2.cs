@@ -1,4 +1,3 @@
-
 var result = item switch
 {
     Square s => Handle(s),
