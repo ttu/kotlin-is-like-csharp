@@ -397,7 +397,7 @@ val multiplied = numbers.map { 3 * it }
 </code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var numbers = new[] { 20, 19, 7, 12 };
 var multiplied = numbers.Select(e => 3 * e);
 // [ 60, 57, 21, 36 ]</code></pre></div></div></div><div class="case"><div class="name">Sort</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val ordered = listOf(1, 5, 3, 12, 2).sorted()
-// [ 1, 2, 3, 5, 12 ]</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var ordered = new[] { 1, 5, 3, 12, 2 }.OrderBy(i => i);
+// [ 1, 2, 3, 5, 12 ]</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var ordered = new[] { 1, 5, 3, 12, 2 }.Order();
 // [ 1, 2, 3, 5, 12 ]</code></pre></div></div></div><div class="case"><div class="name">Filter / GroupBy / Average</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>var datas = listOf(
     SensorData(1, "A", 2.89),
     SensorData(2, "B", 12.01),
