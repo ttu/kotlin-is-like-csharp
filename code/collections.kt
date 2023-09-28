@@ -1,4 +1,4 @@
-var datas = listOf(
+val datas = listOf(
     SensorData(1, "A", 2.89),
     SensorData(2, "B", 12.01),
     SensorData(3, "B", 11.89),
@@ -6,7 +6,7 @@ var datas = listOf(
     SensorData(5, "A", -456.0)
 )
 
-var avgs = datas
+val avgs = datas
     .filter { it.value > -50.0 }
     .groupBy(SensorData::location)
     .map { Location(it.key, it.value.map(SensorData::value).average()) }
