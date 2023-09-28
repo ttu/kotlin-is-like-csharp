@@ -7,11 +7,9 @@ var datas = listOf(
 )
 
 var avgs = datas
-            .filter { it.value > -50.0 }
-            .groupBy { it.location }
-            .map { g -> 
-                Location(g.key, 
-                         g.value.map { it.value }.average()) }
-
+    .filter { it.value > -50.0 }
+    .groupBy(SensorData::location)
+    .map { Location(it.key, it.value.map(SensorData::value).average()) }
+    
 // (location=A, value=3.0)
 // (location=B, value=11.95)
