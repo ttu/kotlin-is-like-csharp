@@ -1,7 +1,7 @@
 val names = arrayOf("Anna", "Alex", "Brian", "Jill", "Jack")
 val count = names.count()
 
-for (name in names.slice(1 until count - 1)) {
+for (name in names.slice(1..<count - 1)) {
     println("Person is called $name")
 }
 // Person is called Alex
