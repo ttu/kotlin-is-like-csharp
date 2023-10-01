@@ -242,13 +242,14 @@ var result = increment(7);
 
 // MakeIncrementer can also be written in a shorter way:
 Func&lt;int, int> MakeIncrementer() => i => 1 + i;
-</code></pre></div></div></div><div class="case"><div class="name">HOF - Function as Parameter</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun transform(initial: String, f: (String) -> String) = f(initial)
+</code></pre></div></div></div><div class="case"><div class="name">HOF - Function as Parameter</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun transform(initial: String, transformer: (String) -> String) = transformer(initial)
 
-val result = transform("hello", { x -> x.toUpperCase() })
+// Function reference
+val result = transform("hello", String::uppercase)
 // HELLO
 
 // Trailing lambda can be placed outside the parentheses
-val result2 = transform("hello") { x -> x.toUpperCase() }</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>string Transform(string initial, Func&lt;string, string> f) => f(initial);
+val result2 = transform("hello") { it.uppercase() }</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>string Transform(string initial, Func&lt;string, string> f) => f(initial);
 
 var result = Transform("hello", x => x.ToUpper());
 // HELLO</code></pre></div></div></div><div class="case"><div class="name">Tuple Return</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// Kotlin doesn't have tuples, use data classes

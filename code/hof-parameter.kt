@@ -1,7 +1,8 @@
-fun transform(initial: String, f: (String) -> String) = f(initial)
+fun transform(initial: String, transformer: (String) -> String) = transformer(initial)
 
-val result = transform("hello", { x -> x.toUpperCase() })
+// Function reference
+val result = transform("hello", String::uppercase)
 // HELLO
 
 // Trailing lambda can be placed outside the parentheses
-val result2 = transform("hello") { x -> x.toUpperCase() }
+val result2 = transform("hello") { it.uppercase() }
