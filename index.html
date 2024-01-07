@@ -339,7 +339,7 @@ names.ForEach(name => Console.WriteLine($"Person is called {name}"));
 // Person is called Jack</code></pre></div></div></div><div class="case"><div class="name">Range Operator</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val names = arrayOf("Anna", "Alex", "Brian", "Jack")
 val count = names.count()
 
-for (i in 0..<count) {
+for (i in 0..&lt;count) {
     println("Person ${i + 1} is called ${names[i]}")
 }
 // Person 1 is called Anna
@@ -377,7 +377,7 @@ foreach (var i in Enumerable.Range(0, count))
 </code></pre></div></div></div><div class="case"><div class="name">Collection Range and Index</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val names = arrayOf("Anna", "Alex", "Brian", "Jill", "Jack")
 val count = names.count()
 
-for (name in names.slice(1..<count - 1)) {
+for (name in names.slice(1..&lt;count - 1)) {
     println("Person is called $name")
 }
 // Person is called Alex
@@ -746,10 +746,10 @@ val text = when (nb) {
 var nb = 42;
 var text = nb switch
 {
-    int i when i < 10 => "single digit",
+    int i when i &lt; 10 => "single digit",
     10 => "double digits",
-    int i when i < 100 => "double digits",
-    int i when i < 1000 => "triple digits",
+    int i when i &lt; 100 => "double digits",
+    int i when i &lt; 1000 => "triple digits",
     _ => "four or more digits"
 };
 
@@ -757,9 +757,9 @@ var text = nb switch
 var nb = 42;
 var text = nb switch
 {
-    < 10 => "single digit",
-    10 or (>= 11 and < 100) => "double digits",
-    < 1000 => "triple digits",
+    &lt; 10 => "single digit",
+    10 or (>= 11 and &lt; 100) => "double digits",
+    &lt; 1000 => "triple digits",
     _ => "for or more digits",
 };
 // double digits</code></pre></div></div></div><div class="case"><div class="name">Is Expression / When Clause / Property Pattern</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// Not supported yet
@@ -767,7 +767,7 @@ var text = nb switch
 // http://openjdk.java.net/jeps/305</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var result = item switch
 {
     Square s => Handle(s),
-    Circle { Radius: < 10 } c => HandleUnder10(c),
+    Circle { Radius: &lt; 10 } c => HandleUnder10(c),
     Circle { Radius: 20 } c => Handle20(c),
     Circle c => Handle(c),
     _ => throw new Exception("Unknown shape")
@@ -776,7 +776,7 @@ var text = nb switch
 // Same with if statements
 if (item is Square s)
 { }
-else if (item is Circle { Radius: < 10 })
+else if (item is Circle { Radius: &lt; 10 })
 { }
 else if (item is Circle { Radius: 20 })
 { }
