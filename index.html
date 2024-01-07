@@ -219,29 +219,29 @@ fun sumOf(vararg numbers: Int) = numbers.sum()
 var sum = SumOf(42, 597, 12);
 
 // SumOf() can also be written in a shorter way:
-int SumOf(params int[] numbers) => numbers.Sum();</code></pre></div></div></div><div class="case"><div class="name">Lambdas</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun containsEven(numbers: List&lt;Int>) = numbers.any { it % 2 == 0 }</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>bool ContainsEven(List&lt;int> numbers) => numbers.Any(e => e % 2 == 0);</code></pre></div></div></div><div class="case"><div class="name">Higher-Order Functions - Return a Function</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun makeIncrementer(): (Int) -> Int {
+int SumOf(params int[] numbers) => numbers.Sum();</code></pre></div></div></div><div class="case"><div class="name">Lambdas</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun containsEven(numbers: List&lt;Int>) = numbers.any { it % 2 == 0 }</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>bool ContainsEven(List&lt;int> numbers) => numbers.Any(e => e % 2 == 0);</code></pre></div></div></div><div class="case"><div class="name">Higher-Order Functions - Return a Function</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun makeIncrementor(): (Int) -> Int {
     val addOne = fun(number: Int): Int {
         return 1 + number
     }
     return addOne
 }
 
-val increment = makeIncrementer()
+val increment = makeIncrementor()
 val result = increment(7)
 
-// makeIncrementer can also be written in a shorter way:
-fun makeIncrementer() = fun(number: Int) = 1 + number
-</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>Func&lt;int, int> MakeIncrementer()
+// makeIncrementor can also be written in a shorter way:
+fun makeIncrementor() = fun(number: Int) = 1 + number
+</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>Func&lt;int, int> MakeIncrementor()
 {
     int addOne(int number) => 1 + number;
     return addOne;
 }
 
-var increment = MakeIncrementer();
+var increment = MakeIncrementor();
 var result = increment(7);
 
-// MakeIncrementer can also be written in a shorter way:
-Func&lt;int, int> MakeIncrementer() => i => 1 + i;
+// MakeIncrementor can also be written in a shorter way:
+Func&lt;int, int> MakeIncrementor() => i => 1 + i;
 </code></pre></div></div></div><div class="case"><div class="name">HOF - Function as Parameter</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>fun transform(initial: String, f: (String) -> String) = f(initial)
 
 val result = transform("hello", { x -> x.toUpperCase() })
