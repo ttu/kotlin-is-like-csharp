@@ -131,19 +131,19 @@ var fruitSummary = $"I have {apples + oranges} " +
                    "pieces of fruit.";
 </code></pre></div></div></div><div class="case"><div class="name">If Expression / Statement</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val age = 42
 
-if (age < 10) {
+if (age &lt; 10) {
     println("You're too young to watch this movie")
-} else if (age < 13) {
+} else if (age &lt; 13) {
     println("You can watch this movie with a parent")
 } else {
     println("You can watch this movie")
 }</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var age = 42;
 
-if (age < 10) 
+if (age &lt; 10) 
 {
     Console.WriteLine("You're too young to watch this movie");
 } 
-else if (age < 13) 
+else if (age &lt; 13) 
 {
     Console.WriteLine("You can watch this movie with a parent");
 } 
@@ -410,7 +410,7 @@ val avgs = data
     .filter { it.value > -50.0 }
     .groupBy(SensorData::location)
     .map { Location(it.key, it.value.map(SensorData::value).average()) }
-
+    
 // (location=A, value=3.0)
 // (location=B, value=11.95)</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var data = new List&lt;SensorData> 
 {
@@ -455,7 +455,7 @@ val items2 = listOf(1, 2, 3, 4)
 // Filter 4,
 // Map 1,
 // Map 3,</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>// LINQ is lazy, so no need to use other collection types
-var query = new List<int> { 1, 2, 3, 4 }
+var query = new List&lt;int> { 1, 2, 3, 4 }
         .Where(i =>
         {
             Console.WriteLine($"Filter {i}, ");
@@ -949,7 +949,7 @@ val asyncRequests = repos.map { repo ->
         val body = Fuel.get("https://api.github.com/repos/$repo")
             .responseString()
             .third.component1() // Fuel Result & Body
-        body?.let { mapper.readValue<Stats>(it) } ?: Stats(repo)
+        body?.let { mapper.readValue&lt;Stats>(it) } ?: Stats(repo)
     }
 }
 
