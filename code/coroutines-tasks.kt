@@ -9,7 +9,7 @@ val asyncRequests = repos.map { repo ->
         val body = Fuel.get("https://api.github.com/repos/$repo")
             .responseString()
             .third.component1() // Fuel Result & Body
-        body?.let { mapper.readValue<Stats>(it) } ?: Stats(repo)
+        body?.let { mapper.readValue&lt;Stats>(it) } ?: Stats(repo)
     }
 }
 

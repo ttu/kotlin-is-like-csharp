@@ -1,7 +1,7 @@
 val names = arrayOf("Anna", "Alex", "Brian", "Jack")
 val count = names.count()
 
-for (i in 0..<count) {
+for (i in 0..&lt;count) {
     println("Person ${i + 1} is called ${names[i]}")
 }
 // Person 1 is called Anna

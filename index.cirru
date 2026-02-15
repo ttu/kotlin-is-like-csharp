@@ -25,7 +25,7 @@ html
       = "Kotlin is like C#"
      
     .disclaimer "Compare the syntax of Kotlin vs C#. Don't take language likeness comparison too seriously."
-    .disclaimer "Fixes, improvents and additions are welcome. Open an issue or a pull request."
+    .disclaimer "Fixes, improvements and additions are welcome. Open an issue or a pull request."
     .section
       .title BASICS
       .case (.name "Hello World") $ .pair

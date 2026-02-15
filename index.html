@@ -98,7 +98,7 @@ body * {
     font-weight: 300;
     letter-spacing: 0.05em;
 }
-</style><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/kotlin.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/cs.min.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><a target="_blank" href="https://github.com/ttu/kotlin-is-like-csharp"><img id="fork-me" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_red_aa0000.png?resize=149%2C149"></a><div id="note">Kotlin is like C#</div><div class="disclaimer">Compare the syntax of Kotlin vs C#. Don't take language likeness comparison too seriously.</div><div class="disclaimer">Fixes, improvents and additions are welcome. Open an issue or a pull request.</div><div class="section"><div class="title">BASICS</div><div class="case"><div class="name">Hello World</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>println("Hello, world!")
+</style><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/kotlin.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/cs.min.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><a target="_blank" href="https://github.com/ttu/kotlin-is-like-csharp"><img id="fork-me" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_red_aa0000.png?resize=149%2C149"></a><div id="note">Kotlin is like C#</div><div class="disclaimer">Compare the syntax of Kotlin vs C#. Don't take language likeness comparison too seriously.</div><div class="disclaimer">Fixes, improvements and additions are welcome. Open an issue or a pull request.</div><div class="section"><div class="title">BASICS</div><div class="case"><div class="name">Hello World</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>println("Hello, world!")
 </code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>public void Main() 
 {
     Console.WriteLine("Hello, world!");
@@ -131,19 +131,19 @@ var fruitSummary = $"I have {apples + oranges} " +
                    "pieces of fruit.";
 </code></pre></div></div></div><div class="case"><div class="name">If Expression / Statement</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val age = 42
 
-if (age < 10) {
+if (age &lt; 10) {
     println("You're too young to watch this movie")
-} else if (age < 13) {
+} else if (age &lt; 13) {
     println("You can watch this movie with a parent")
 } else {
     println("You can watch this movie")
 }</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var age = 42;
 
-if (age < 10) 
+if (age &lt; 10) 
 {
     Console.WriteLine("You're too young to watch this movie");
 } 
-else if (age < 13) 
+else if (age &lt; 13) 
 {
     Console.WriteLine("You can watch this movie with a parent");
 } 
@@ -339,7 +339,7 @@ names.ForEach(name => Console.WriteLine($"Person is called {name}"));
 // Person is called Jack</code></pre></div></div></div><div class="case"><div class="name">Range Operator</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val names = arrayOf("Anna", "Alex", "Brian", "Jack")
 val count = names.count()
 
-for (i in 0..<count) {
+for (i in 0..&lt;count) {
     println("Person ${i + 1} is called ${names[i]}")
 }
 // Person 1 is called Anna
@@ -377,7 +377,7 @@ foreach (var i in Enumerable.Range(0, count))
 </code></pre></div></div></div><div class="case"><div class="name">Collection Range and Index</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val names = arrayOf("Anna", "Alex", "Brian", "Jill", "Jack")
 val count = names.count()
 
-for (name in names.slice(1..<count - 1)) {
+for (name in names.slice(1..&lt;count - 1)) {
     println("Person is called $name")
 }
 // Person is called Alex
@@ -398,7 +398,7 @@ val multiplied = numbers.map { 3 * it }
 var multiplied = numbers.Select(e => 3 * e);
 // [ 60, 57, 21, 36 ]</code></pre></div></div></div><div class="case"><div class="name">Sort</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val ordered = listOf(1, 5, 3, 12, 2).sorted()
 // [ 1, 2, 3, 5, 12 ]</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var ordered = new[] { 1, 5, 3, 12, 2 }.OrderBy(i => i);
-// [ 1, 2, 3, 5, 12 ]</code></pre></div></div></div><div class="case"><div class="name">Filter / GroupBy / Average</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val datas = listOf(
+// [ 1, 2, 3, 5, 12 ]</code></pre></div></div></div><div class="case"><div class="name">Filter / GroupBy / Average</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>val data = listOf(
     SensorData(1, "A", 2.89),
     SensorData(2, "B", 12.01),
     SensorData(3, "B", 11.89),
@@ -406,13 +406,13 @@ var multiplied = numbers.Select(e => 3 * e);
     SensorData(5, "A", -456.0)
 )
 
-val avgs = datas
+val avgs = data
     .filter { it.value > -50.0 }
     .groupBy(SensorData::location)
     .map { Location(it.key, it.value.map(SensorData::value).average()) }
-
+    
 // (location=A, value=3.0)
-// (location=B, value=11.95)</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var datas = new List&lt;SensorData> 
+// (location=B, value=11.95)</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var data = new List&lt;SensorData> 
 {
     new SensorData { Id = 1, Location = "A", Value = 2.89 },
     new SensorData { Id = 2, Location = "B", Value = 12.01 },
@@ -421,7 +421,7 @@ val avgs = datas
     new SensorData { Id = 5, Location = "A", Value = -456.0 }
 };
 
-var avgs = datas
+var avgs = data
             .Where(e => e.Value > -50.0)
             .GroupBy(e => e.Location)
             .Select(g => new { 
@@ -455,7 +455,7 @@ val items2 = listOf(1, 2, 3, 4)
 // Filter 4,
 // Map 1,
 // Map 3,</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>// LINQ is lazy, so no need to use other collection types
-var query = new List<int> { 1, 2, 3, 4 }
+var query = new List&lt;int> { 1, 2, 3, 4 }
         .Where(i =>
         {
             Console.WriteLine($"Filter {i}, ");
@@ -746,10 +746,10 @@ val text = when (nb) {
 var nb = 42;
 var text = nb switch
 {
-    int i when i < 10 => "single digit",
+    int i when i &lt; 10 => "single digit",
     10 => "double digits",
-    int i when i < 100 => "double digits",
-    int i when i < 1000 => "triple digits",
+    int i when i &lt; 100 => "double digits",
+    int i when i &lt; 1000 => "triple digits",
     _ => "four or more digits"
 };
 
@@ -757,9 +757,9 @@ var text = nb switch
 var nb = 42;
 var text = nb switch
 {
-    < 10 => "single digit",
-    10 or (>= 11 and < 100) => "double digits",
-    < 1000 => "triple digits",
+    &lt; 10 => "single digit",
+    10 or (>= 11 and &lt; 100) => "double digits",
+    &lt; 1000 => "triple digits",
     _ => "for or more digits",
 };
 // double digits</code></pre></div></div></div><div class="case"><div class="name">Is Expression / When Clause / Property Pattern</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// Not supported yet
@@ -767,7 +767,7 @@ var text = nb switch
 // http://openjdk.java.net/jeps/305</code></pre></div><div class="card"><div class="lang">C#</div><pre class="code"><code>var result = item switch
 {
     Square s => Handle(s),
-    Circle { Radius: < 10 } c => HandleUnder10(c),
+    Circle { Radius: &lt; 10 } c => HandleUnder10(c),
     Circle { Radius: 20 } c => Handle20(c),
     Circle c => Handle(c),
     _ => throw new Exception("Unknown shape")
@@ -776,7 +776,7 @@ var text = nb switch
 // Same with if statements
 if (item is Square s)
 { }
-else if (item is Circle { Radius: < 10 })
+else if (item is Circle { Radius: &lt; 10 })
 { }
 else if (item is Circle { Radius: 20 })
 { }
@@ -949,7 +949,7 @@ val asyncRequests = repos.map { repo ->
         val body = Fuel.get("https://api.github.com/repos/$repo")
             .responseString()
             .third.component1() // Fuel Result & Body
-        body?.let { mapper.readValue<Stats>(it) } ?: Stats(repo)
+        body?.let { mapper.readValue&lt;Stats>(it) } ?: Stats(repo)
     }
 }
 

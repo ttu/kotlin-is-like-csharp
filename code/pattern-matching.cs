@@ -2,10 +2,10 @@
 var nb = 42;
 var text = nb switch
 {
-    int i when i < 10 => "single digit",
+    int i when i &lt; 10 => "single digit",
     10 => "double digits",
-    int i when i < 100 => "double digits",
-    int i when i < 1000 => "triple digits",
+    int i when i &lt; 100 => "double digits",
+    int i when i &lt; 1000 => "triple digits",
     _ => "four or more digits"
 };
 
@@ -13,9 +13,9 @@ var text = nb switch
 var nb = 42;
 var text = nb switch
 {
-    < 10 => "single digit",
-    10 or (>= 11 and < 100) => "double digits",
-    < 1000 => "triple digits",
+    &lt; 10 => "single digit",
+    10 or (>= 11 and &lt; 100) => "double digits",
+    &lt; 1000 => "triple digits",
     _ => "for or more digits",
 };
 // double digits

@@ -1,5 +1,5 @@
 // LINQ is lazy, so no need to use other collection types
-var query = new List<int> { 1, 2, 3, 4 }
+var query = new List&lt;int> { 1, 2, 3, 4 }
         .Where(i =>
         {
             Console.WriteLine($"Filter {i}, ");
